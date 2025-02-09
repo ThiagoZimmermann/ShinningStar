@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(165, 103, 65, 0.753)
+}
+
+header {
+    display: flex;
+    align-items: center;
+    font: normal 20pt Arial;
+    background-color: rgba(7, 25, 163, 0.371);
+}
+
+div#prod {
+    margin: 10px;
+}
+
+div#seg {
+    margin: 10px;
+}
+
+div#about {
+    margin: 10px;
+}
+
+div#en {
+    margin: 10px;
+}
+div#login_bttn {
+    margin: 10px;
+    background-color: rgba(38, 38, 168, 0.329);
+    box-shadow: 3px 3px 10px black;
+    border-radius: 10px;
+    width: 79px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    color: white
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-on-hover {
+    transition: transform 0.3s ease-in-out;
+}
+.float-on-hover:hover {
+    transform: translateY(-10px); /* Move a div 10px para cima */
+}
+
+footer {
+    font: normal 15pt Arial;
+    background-color: rgba(118, 114, 250, 0.205);
+    flex: auto;
+    height: 50px;
+    display: flex;
+    align-items: center; 
+}
+
+
