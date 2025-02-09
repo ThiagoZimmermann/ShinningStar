@@ -1,14 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(165, 103, 65, 0.753);
+    
+    background-image: url('estrelas.png');
 }
 
 header {
     display: flex;
     align-items: center;
     font: normal 20pt Arial;
-    background-color: rgba(118, 114, 250, 0.205);
+    background-color: rgba(253, 253, 253, 0.077);
+    height: 60px
 }
 
 section#header1{
@@ -22,8 +24,7 @@ section#header2 {
 }
 
 div#home {
-    height: 500px;
-    background-image: url('estrelas.png');
+    height: calc(100vh - 100px);
 }
 
 
@@ -62,6 +63,7 @@ div#login_bttn {
 }
 
 .float-on-hover {
+    cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
 .float-on-hover:hover {
@@ -70,11 +72,18 @@ div#login_bttn {
 
 footer {
     font: normal 15pt Arial;
-    background-color: rgba(118, 114, 250, 0.205);
+    background-color: rgb(118, 114, 250);
     flex: auto;
     height: 50px;
     display: flex;
     align-items: center;
 }
 
+div#home {
+    display: flex;
+}
 
+img#nome {
+    align-self: center;
+    margin-left: 50vh;
+}
