@@ -8,11 +8,12 @@
     <link rel="icon" href="logo-site.png" type="image/png">
 </head>
 <body>
-    <header> 
-        <div onclick='Menu(logo)' id="logo" >
+    <header>
+        <div onclick='Menu("logo")' id="logo" >
             <img src="logo.png">
         </div>
-        <div onclick='Menu(prod)' id="prod">
+        <section id="header1">
+        <div onclick='Menu("prod")' id="prod">
             Produtos
         </div>
         <div onclick='Menu("seg")' id="seg">
@@ -24,10 +25,17 @@
         <div onclick='Menu("en")' id="en">
             English
         </div>
-        <div onclick='Menu(login_bttn)' id="login_bttn" class="float-on-hover" >
+        </section id='header2'>
+        <section>
+        <div onclick='Menu("login_bttn")' id="login_bttn" class="float-on-hover" >
             Entrar
         </div>
+        </section>
     </header>
+
+    <div id="home">
+
+    </div>
 
     <div class="footer-container">
         <footer>
@@ -36,6 +44,6 @@
         <footer id="footer">&copy; 2025 Shinning Star</footer>
     </div>
         
-    <script src="script.js"></script>
+    <script src="v1.js"></script>
 </body>
 </html>

@@ -1,15 +1,31 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(165, 103, 65, 0.753)
+    background-color: rgba(165, 103, 65, 0.753);
 }
 
 header {
     display: flex;
     align-items: center;
     font: normal 20pt Arial;
-    background-color: rgba(7, 25, 163, 0.371);
+    background-color: rgba(118, 114, 250, 0.205);
 }
+
+section#header1{
+    flex: auto;
+    display: flex;
+}
+
+section#header2 {
+    flex: auto;
+    display: flex;
+}
+
+div#home {
+    height: 500px;
+    background-image: url('estrelas.png');
+}
+
 
 div#prod {
     margin: 10px;
@@ -35,7 +51,8 @@ div#login_bttn {
     text-align: center;
     height: 35px;
     line-height: 35px;
-    color: white
+    color: white;
+    margin-left: auto;
 }
 
 .footer-container {
@@ -57,7 +74,7 @@ footer {
     flex: auto;
     height: 50px;
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 

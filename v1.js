@@ -15,7 +15,7 @@ function Menu(id) {
         case "en":
             alert("Clicou em English");
             break;
-        case "login":
+        case "login_bttn":
             alert("Clicou em Entrar");
             break;
         default:
