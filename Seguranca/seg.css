@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    
+    background-image: url('../Images/estrelas.png');
+}
+
+header {
+    display: flex;
+    align-items: center;
+    font: normal 20pt Arial;
+    background-color: rgba(253, 253, 253, 0.077);
+    height: 60px
+}
+
+section#header1{
+    flex: auto;
+    display: flex;
+}
+
+section#header2 {
+    flex: auto;
+    display: flex;
+}
+
+div#home {
+    height: calc(100vh - 100px);
+}
+
+
+div#prod {
+    margin: 10px;
+}
+
+div#seg {
+    margin: 10px;
+}
+
+div#about {
+    margin: 10px;
+}
+
+div#en {
+    margin: 10px;
+}
+div#login_bttn {
+    margin: 10px;
+    background-color: rgba(38, 38, 168, 0.329);
+    box-shadow: 3px 3px 10px black;
+    border-radius: 10px;
+    width: 79px;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    color: white;
+    margin-left: auto;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-on-hover {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.float-on-hover:hover {
+    transform: translateY(-10px); /* Move a div 10px para cima */
+}
+
+footer {
+    font: normal 15pt Arial;
+    background-color: rgb(118, 114, 250);
+    flex: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+div#home {
+    display: flex;
+}
+
+img#nome {
+    align-self: center;
+    margin-left: 50vh;
+}
