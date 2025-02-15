@@ -1,16 +1,26 @@
 body {
     margin: 0;
     padding: 0;
-    
-    background-image: url('Images/estrelas.png');
+    font: normal 15pt Agrandir;
+    background-color: rgb(181, 181, 181);
 }
 
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     align-items: center;
-    font: normal 20pt Arial;
-    background-color: rgba(253, 253, 253, 0.077);
-    height: 60px
+    font: Bold 20pt Agrandir;
+    color: rgb(224, 224, 224);
+    background-color: rgba(75, 12, 12, 0.421);
+    height: 60px;
+}
+
+img#Menu {
+    margin-top: 15px;
+    width: 250px;
+    height: auto;
 }
 
 section#header1{
@@ -45,14 +55,14 @@ div#en {
 }
 div#login_bttn {
     margin: 10px;
-    background-color: rgba(38, 38, 168, 0.329);
-    box-shadow: 3px 3px 10px black;
+    background-color: rgba(102, 26, 26, 0);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0);
     border-radius: 10px;
     width: 79px;
     text-align: center;
     height: 35px;
     line-height: 35px;
-    color: white;
+    color: rgb(130, 26, 26);
     margin-left: auto;
 }
 
@@ -72,11 +82,17 @@ div#login_bttn {
 
 footer {
     font: normal 15pt Arial;
-    background-color: rgb(118, 114, 250);
+    background-color: rgba(75, 12, 12, 0.682);
     flex: auto;
     height: 50px;
     display: flex;
     align-items: center;
+}
+
+p#footer {
+    margin-left: 60vh;
+    color: white;
+    font: normal 15pt Agrandir;
 }
 
 div#home {
@@ -86,4 +102,9 @@ div#home {
 img#nome {
     align-self: center;
     margin-left: 50vh;
+}
+
+img#footer {
+    width: 250px;
+    height: auto;
 }
