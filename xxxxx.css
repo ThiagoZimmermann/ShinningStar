@@ -23,6 +23,14 @@ img#Menu {
     height: auto;
 }
 
+img.zoom {
+    transition: transform 0.3s ease-in-out;
+}
+
+img.zoom:hover {
+    transform: scale(1.1);
+}
+
 section#header1{
     flex: auto;
     display: flex;
