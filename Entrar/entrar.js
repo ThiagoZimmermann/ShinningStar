@@ -22,7 +22,6 @@ function Menu(id) {
             break;
         case "login_bttn":
             alert("Clicou em Entrar");
-            window.location.href = "Entrar/entrar.html";
             break;
         default:
             alert("Opção desconhecida");
