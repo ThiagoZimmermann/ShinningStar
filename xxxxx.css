@@ -8,7 +8,7 @@ body {
 
 @font-face {
     font-family: 'Agrandir';
-    src: url('Agrandir-Regular.ttf') format('truetype');
+    src: url('Agrandir-Regular.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -52,6 +52,8 @@ section#header2 {
 
 div#home {
     height: calc(100vh - 100px);
+    display: flex;
+
 }
 
 
@@ -111,10 +113,6 @@ p#footer {
     margin-left: 60vh;
     color: white;
     font: normal 15pt Agrandir;
-}
-
-div#home {
-    display: flex;
 }
 
 img#nome {
