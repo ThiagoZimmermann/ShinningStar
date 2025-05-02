@@ -29,7 +29,6 @@ header {
 img#Menu {
     margin-top: 10px;
     width: 250px;
-    height: auto;
 }
 
 img.zoom {
@@ -53,7 +52,6 @@ section#header2 {
 div#home {
     height: calc(100vh - 100px);
     display: flex;
-
 }
 
 
@@ -117,7 +115,8 @@ p#footer {
 
 img#nome {
     align-self: center;
-    margin-left: 50vh;
+    margin-left: calc(50vw - 25%);
+    width: 50%;
 }
 
 img#footer {
