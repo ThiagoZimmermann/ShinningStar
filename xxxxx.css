@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font: normal 15pt Agrandir;
+    font-family: 'Agrandir', sans-serif;
     background-color: rgb(181, 181, 181);
 }
 

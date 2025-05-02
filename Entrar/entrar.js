@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const feed = document.getElementById('feed');
     let currentPostIndex = 0;
-    const posts = [];
+    const posts = [
+        { img: '../Images/mulher1.jpg', name: 'Isadora', message: 'Olá, sou a Isadora!' },
+        { img: '../Images/mulher2.jpg', name: 'Camila', message: 'Oi, sou a Camila!' },
+        { img: '../Images/mulher3.jpg', name: 'Luiza', message: 'Oi, sou a Luiza!' },
+        { img: '../Images/cidade.jpg', name: 'Sofia', message: 'Oi, sou a Sofia!' },
+        { img: '../Images/natureza.jpg', name: 'Clara', message: 'Oi, sou a Clara!' }
+    ]; // Array de posts com imagens, nomes e mensagens
+    const overlay = document.getElementById('overlay');
     const backgrounds = [
         '../Images/mulher1.jpg',
         '../Images/mulher2.jpg',
@@ -149,37 +156,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function populateOverlay() {
+        const overlayTop = document.getElementById('overlay-top');
+        const overlay = document.getElementById('overlay');
+        const overlayBottom = document.getElementById('overlay-bottom');
+    
+        // Limpa o conteúdo existente
         overlayTop.innerHTML = '';
         overlayBottom.innerHTML = '';
-
+    
+        // Adiciona imagens circulares na parte superior
         posts.forEach((post, index) => {
-            // Adiciona imagens circulares na parte superior
             const circleImg = document.createElement('img');
-            circleImg.src = post.img;
+            circleImg.src = post.img; // Certifique-se de que `post.img` contém o caminho correto
             circleImg.alt = post.name;
+            circleImg.className = 'circle-img';
             circleImg.addEventListener('click', () => {
-                currentPostIndex = index;
-                showPost(currentPostIndex);
+                console.log(`Clicou na imagem do post ${index + 1}`);
             });
             overlayTop.appendChild(circleImg);
-
-            // Adiciona retângulos com informações na parte inferior
+        });
+    
+        // Adiciona retângulos com informações na parte inferior
+        posts.forEach((post) => {
             const postInfo = document.createElement('div');
             postInfo.className = 'post-info';
-
+    
             const profileImg = document.createElement('img');
-            profileImg.src = post.img;
+            profileImg.src = post.img; // Certifique-se de que `post.img` contém o caminho correto
             profileImg.alt = post.name;
-
+    
             const details = document.createElement('div');
             details.className = 'details';
-
+    
             const name = document.createElement('p');
             name.textContent = post.name;
-
+    
             const message = document.createElement('p');
             message.textContent = post.message;
-
+    
             details.appendChild(name);
             details.appendChild(message);
             postInfo.appendChild(profileImg);
@@ -187,15 +201,15 @@ document.addEventListener('DOMContentLoaded', function () {
             overlayBottom.appendChild(postInfo);
         });
     }
-
     circleButton.addEventListener('click', () => {
-        overlay.classList.remove('hidden');
-        populateOverlay();
+        overlay.classList.remove('hidden'); // Mostra o overlay
+        populateOverlay(); // Preenche o conteúdo do overlay
     });
-
+    
     overlay.addEventListener('click', (e) => {
+        // Verifica se o clique foi fora do conteúdo do overlay
         if (e.target === overlay) {
-            overlay.classList.add('hidden');
+            overlay.classList.add('hidden'); // Esconde o overlay
         }
     });
 
