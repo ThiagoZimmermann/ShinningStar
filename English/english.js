@@ -13,7 +13,7 @@ function Menu(id) {
             window.location.href = "/Sobre nos/sobre.html";
             break;
         case "en":
-            window.location.href = "/English/english.html";
+            window.location.href = "../English/english.html";
             break;
         case "login_bttn":
             window.location.href = "/Entrar/entrar.html";
