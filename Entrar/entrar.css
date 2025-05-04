@@ -142,11 +142,36 @@ img#up {
     object-fit: cover;
 }
 
-.hidden {
-    display: none;
+#circle-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    bottom: 20px; /* Distância do botão em relação à parte inferior */
+    right: 20px; /* Distância do botão em relação à parte direita */
+    width: 70px; /* Largura do botão */
+    height: 70px; /* Altura do botão */
+    background-color: #fff; /* Cor de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    transition: transform 0.3s ease-in-out;
 }
 
-#overlay {
+#circle-button:hover {
+    transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+}
+
+#circle-button img {
+    width: 70%; /* Ajusta o tamanho da imagem dentro do botão */
+    height: 70%;
+    object-fit: cover;
+}
+.hidden {
+    visibility:hidden;
+}
+
+#popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -159,18 +184,39 @@ img#up {
     z-index: 1000;
 }
 
-#overlay-content {
-    width: 80%;
-    height: 80%;
+#popup-content {
     background-color: #fff;
+    width: 803%;
+    height: 90%;
+    max-width: 400px;
+    padding: 20px;
     border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
+    position: relative;
 }
 
-#overlay-top {
-    flex: 1;
+#close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5c5c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#close-popup:hover {
+    background-color: #ff3b3b;
+}
+
+#popup-top {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -180,16 +226,7 @@ img#up {
     overflow-x: auto;
 }
 
-#overlay-bottom {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-.circle-img {
+#popup-top img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -198,8 +235,16 @@ img#up {
     transition: transform 0.3s ease-in-out;
 }
 
-.circle-img:hover {
+#popup-top img:hover {
     transform: scale(1.1);
+}
+
+#popup-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
 }
 
 .post-info {
@@ -222,11 +267,4 @@ img#up {
 .post-info .details {
     display: flex;
     flex-direction: column;
-}
-
-#overlay-bottom .post-info img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
 }
