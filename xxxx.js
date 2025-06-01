@@ -16,7 +16,7 @@ function Menu(id) {
             window.location.href = "English/english.html";
             break;
         case "login_bttn":
-            window.location.href = "Entrar/entrar.html";
+            window.location.href = "Configurações/config.html";
             break;
         default:
             alert("Opção desconhecida");
