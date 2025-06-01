@@ -6,8 +6,8 @@ const posts = [
     { img: '../Images/mulher1.jpg', name: 'Isadora', message: 'Olá, sou a Isadora!' },
     { img: '../Images/mulher2.jpg', name: 'Camila', message: 'Oi, sou a Camila!' },
     { img: '../Images/mulher3.jpg', name: 'Luiza', message: 'Oi, sou a Luiza!' },
-    { img: '../Images/cidade.jpg', name: 'Sofia', message: 'Oi, sou a Sofia!' },
-    { img: '../Images/natureza.jpg', name: 'Clara', message: 'Oi, sou a Clara!' }
+    { img: '../Images/mulher4.jpg', name: 'Sofia', message: 'Oi, sou a Sofia!' },
+    { img: '../Images/mulher5.jpg', name: 'Clara', message: 'Oi, sou a Clara!' }
 ];
 
 let currentPostIndex = 0;
@@ -74,11 +74,15 @@ function createPopup() {
     const popupTop = document.createElement('div');
     popupTop.id = 'popup-top';
     posts.forEach((post) => {
-        const circleImg = document.createElement('img');
-        circleImg.src = post.img;
-        circleImg.alt = post.name;
-        circleImg.className = 'circle-img';
-        popupTop.appendChild(circleImg);
+    const circleImg = document.createElement('img');
+    circleImg.src = post.img;
+    circleImg.alt = post.name;
+    circleImg.className = 'circle-img';
+    circleImg.addEventListener('click', () => {
+        localStorage.setItem('chatUser', post.name); // Salva o nome
+        window.location.href = 'Chat/chat.html';  // Redireciona para a página de chat
+    });
+    popupTop.appendChild(circleImg);
     });
 
     // Cria a divisão inferior com retângulos de informações
@@ -130,3 +134,4 @@ const popup = createPopup(); // Cria o popup dinamicamente
 circleButton.addEventListener('click', () => {
     popup.classList.remove('hidden'); // Abre o popup
 });
+

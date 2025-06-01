@@ -1,0 +1,35 @@
+/* Adicione esta regra para o contêiner principal */
+#container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Cada div ocupa o mesmo espaço */
+.nomes{
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+    width: 30%;
+}
+
+.chat {
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+}
+
+
+
+/* Exemplo de cores para visualização */
+.nomes {
+    background-color: black;
+    color: white;
+}
+.chat {
+    background-color: aquamarine;
+}
+.bottom {
+    background-color: #eee;
+}
