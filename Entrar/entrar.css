@@ -9,7 +9,7 @@ body {
 #menu {
     width: 150px;
     background-color: #803333;
-    color: #fff;
+    color: rgb(255, 255, 255);
     padding: 20px;
     display: flex;
     flex-direction: column;
