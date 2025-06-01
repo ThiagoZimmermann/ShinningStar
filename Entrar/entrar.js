@@ -78,39 +78,41 @@ function createPopup() {
     circleImg.src = post.img;
     circleImg.alt = post.name;
     circleImg.className = 'circle-img';
-    circleImg.addEventListener('click', () => {
-        localStorage.setItem('chatUser', post.name); // Salva o nome
-        window.location.href = 'Chat/chat.html';  // Redireciona para a página de chat
-    });
     popupTop.appendChild(circleImg);
     });
 
     // Cria a divisão inferior com retângulos de informações
     const popupBottom = document.createElement('div');
-    popupBottom.id = 'popup-bottom';
-    posts.forEach((post) => {
-        const postInfo = document.createElement('div');
-        postInfo.className = 'post-info';
+popupBottom.id = 'popup-bottom';
+posts.forEach((post) => {
+    const postInfo = document.createElement('div');
+    postInfo.className = 'post-info';
 
-        const profileImg = document.createElement('img');
-        profileImg.src = post.img;
-        profileImg.alt = post.name;
+    const profileImg = document.createElement('img');
+    profileImg.src = post.img;
+    profileImg.alt = post.name;
 
-        const details = document.createElement('div');
-        details.className = 'details';
+    const details = document.createElement('div');
+    details.className = 'details';
 
-        const name = document.createElement('p');
-        name.textContent = post.name;
+    const name = document.createElement('p');
+    name.textContent = post.name;
 
-        const message = document.createElement('p');
-        message.textContent = post.message;
+    const message = document.createElement('p');
+    message.textContent = post.message;
 
-        details.appendChild(name);
-        details.appendChild(message);
-        postInfo.appendChild(profileImg);
-        postInfo.appendChild(details);
-        popupBottom.appendChild(postInfo);
+    details.appendChild(name);
+    details.appendChild(message);
+    postInfo.appendChild(profileImg);
+    postInfo.appendChild(details);
+    popupBottom.appendChild(postInfo);
+
+    // Evento de clique para ir ao chat e salvar o nome
+    postInfo.addEventListener('click', () => {
+        localStorage.setItem('chatUser', post.name);
+        window.location.href = 'Chat/chat.html';
     });
+});
 
     // Monta o popup
     popupContent.appendChild(closePopup);
