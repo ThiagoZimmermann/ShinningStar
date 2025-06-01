@@ -45,7 +45,9 @@ function showWelcomeScreen() {
         <p>Tipo de usuário: ${userType}</p>
         <button id="btn-sair">Sair</button>
     `;
-    document.getElementById('btn-sair').onclick = showInitialScreen;
+    document.getElementById('btn-sair').onclick = function() {
+        window.location.href = '../Entrar/entrar.html';
+    };
 }
 
 // Inicializa a tela
