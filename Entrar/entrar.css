@@ -150,7 +150,7 @@ img#up {
     width: 70px; /* Largura do botão */
     height: 70px; /* Altura do botão */
     background-color: #fff; /* Cor de fundo */
-    display: flex;
+    
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -218,7 +218,7 @@ img#up {
 
 #popup-top {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 10px;
     background-color: #f0f0f0;
@@ -245,6 +245,7 @@ img#up {
     gap: 10px;
     padding: 10px;
     overflow-y: auto;
+    cursor: pointer;
 }
 
 .post-info {

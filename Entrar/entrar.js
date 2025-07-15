@@ -6,9 +6,7 @@ const posts = [
     { img: '../Images/mulher1.jpg', name: 'Isadora', message: 'Olá, sou a Isadora!' },
     { img: '../Images/mulher2.jpg', name: 'Camila', message: 'Oi, sou a Camila!' },
     { img: '../Images/mulher3.jpg', name: 'Luiza', message: 'Oi, sou a Luiza!' },
-    { img: '../Images/mulher4.jpg', name: 'Sofia', message: 'Oi, sou a Sofia!' },
-    { img: '../Images/mulher5.jpg', name: 'Clara', message: 'Oi, sou a Clara!' }
-];
+]
 
 let currentPostIndex = 0;
 
@@ -71,15 +69,47 @@ function createPopup() {
     });
 
     // Cria a divisão superior com imagens circulares
-    const popupTop = document.createElement('div');
-    popupTop.id = 'popup-top';
-    posts.forEach((post) => {
+ const popupTop = document.createElement('div');
+popupTop.id = 'popup-top';
+posts.forEach((post) => {
     const circleImg = document.createElement('img');
     circleImg.src = post.img;
     circleImg.alt = post.name;
     circleImg.className = 'circle-img';
-    popupTop.appendChild(circleImg);
+    circleImg.addEventListener('click', () => {
+        // Limpa o conteúdo do popupContent
+        popupContent.innerHTML = '';
+        popupContent.style.backgroundImage = `url(${post.img})`;
+        popupContent.style.backgroundSize = 'cover';
+        popupContent.style.backgroundPosition = 'center';
+        popupContent.style.display = 'flex';
+        popupContent.style.flexDirection = 'column';
+        popupContent.style.alignItems = 'center';
+        popupContent.style.justifyContent = 'center';
+        popupContent.style.minHeight = '350px';
+
+        // Botão de fechar
+        const closePopup = document.createElement('button');
+        closePopup.id = 'close-popup';
+        closePopup.textContent = 'X';
+        closePopup.addEventListener('click', () => {
+            popup.classList.add('hidden');
+        });
+
+        // Nome embaixo
+    const name = document.createElement('div');
+    name.textContent = post.name;
+    name.style.font = 'bold 22px Agrandir, Arial, sans-serif';
+    name.style.color = '#885e5eff';
+    name.style.marginTop = '500px';
+    
+    name.style.marginLeft = '-300px';
+
+        popupContent.appendChild(closePopup);
+        popupContent.appendChild(name);
     });
+    popupTop.appendChild(circleImg);
+});
 
     // Cria a divisão inferior com retângulos de informações
     const popupBottom = document.createElement('div');
