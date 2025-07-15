@@ -86,19 +86,63 @@ function showInitialScreen() {
 
 
 // Função para mostrar o formulário de usuário
+
 function showUserForm() {
     document.getElementById('app').innerHTML = `
-        <div class="user-form">
+        <style>
+    .user-form .btn-float {
+        width: 120px;
+        height: 45px;
+        border-radius: 22px;
+        background: #803333;
+        color: #fff;
+        font-size: 1.1em;
+        border: none;
+        cursor: pointer;
+        font: normal 16pt Agrandir;
+        transition: background 0.2s, transform 0.2s;
+        float: left;
+        margin-right: 15px;
+    }
+    .user-form .btn-float.right {
+        float: right;
+        margin-right: 0;
+        margin-left: 15px;
+    }
+    .user-form .btn-float:hover {
+        background: #a94444;
+        transform: translateY(-8px);
+    }
+            .clearfix::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .popup {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s;
+            }
+            .popup.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        </style>
+        <div class="user-form" style="overflow: hidden;">
             <h1>Quem é você</h1>
-            <label>Nome:</label>
-            <input type="text" id="nome" placeholder="Digite seu nome">
-
-            <label>Idade:</label>
-            <input type="number" id="idade" placeholder="Digite sua idade">
-
-            <button id="btn-outros">Outros</button>
-
-            <div id="popup" class="popup hidden">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label for="nome" style="min-width:60px; text-align:right;">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <label for="idade" style="min-width:60px; text-align:right;">Idade:</label>
+                <input type="number" id="idade" placeholder="Digite sua idade">
+            </div>
+            <div class="clearfix" style="width: 270px; margin: 20px auto 0 auto; overflow: hidden;">
+                <button id="btn-outros" class="btn-float">Outros</button>
+                <button id="btn-avancar" class="btn-float right">Avançar</button>
+            </div>
+            <div id="popup" class="popup">
                 <div class="popup-content">
                     <input type="text" placeholder="Pesquisar..." class="popup-search">
                     <div class="popup-body">
@@ -121,11 +165,24 @@ function showUserForm() {
         </div>
     `;
 
+    // Popup transição
+    const popup = document.getElementById('popup');
     document.getElementById('btn-outros').onclick = () => {
-        document.getElementById('popup').classList.remove('hidden');
+        popup.classList.add('show');
     };
     document.getElementById('close-popup').onclick = () => {
-        document.getElementById('popup').classList.add('hidden');
+        popup.classList.remove('show');
+    };
+
+    // Transição ao clicar em avançar
+    document.getElementById('btn-avancar').onclick = () => {
+        const app = document.getElementById('app');
+        app.style.transition = 'opacity 0.4s';
+        app.style.opacity = 0;
+        setTimeout(() => {
+            app.innerHTML = '<h1 style="margin-top:100px;">Próxima etapa...</h1>';
+            app.style.opacity = 1;
+        }, 400);
     };
 }
 
