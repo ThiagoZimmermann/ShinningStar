@@ -8,6 +8,16 @@ body, input, button, select, textarea, h1, h2, h3, h4, h5, h6, div, span, p, lab
     font-family: 'Agrandir', sans-serif !important;
 }
 
+
+
+@font-face {
+    font-family: 'Agrandir';
+    src: url('Agrandir-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* Container fade */
 #app {
     transition: opacity 0.4s ease-in-out;
