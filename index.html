@@ -8,9 +8,29 @@
     <link rel="icon" href="Images/estrela.png" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Agrandir:wght@400;700&display=swap" rel="stylesheet">
-
+    <style>
+        /* Layout básico para apresentação */
+        .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+        .section { margin-bottom: 48px; }
+        .section-title { font-size: 2rem; margin-bottom: 16px; color: #520f17; }
+        .flex { display: flex; gap: 32px; flex-wrap: wrap; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 24px; flex: 1 1 300px; min-width: 280px; }
+        .icon { width: 72px; height: 72px; margin-bottom: 8px; }
+        .logo-desc { display: flex; align-items: center; gap: 24px; }
+        .logo-desc img { width: 90px; }
+        .merch-img { width: 80px; border-radius: 8px; margin: 8px; }
+        .plan-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .plan-table th, .plan-table td { border: 1px solid #6e6e6e; padding: 8px; text-align: center; }
+        .plan-table th { background: #4e4e4e; }
+        @media (max-width: 800px) {
+            .flex { flex-direction: column; }
+            .logo-desc { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
+
+    
     <header>
         <div onclick='Menu("logo")' id="logo" >
             <img id = "Menu" src="Images/logo3.png" class="zoom">
@@ -39,13 +59,242 @@
     <div id="home">
         <img src="Images/nome.png" id="nome">
     </div>
-    <h1>Quem somos nós, o que suprimos e o que fazemos:</h1>
 
-    <p>Somos uma empresa de tecnologia voltada para a divulgação individual de produtos e serviços oferecidos por diferentes pessoas para suprir a demanda de seus clientes. Com foco na eficiência, nós atuamos como filtradores e coletores de clientes - seja por região, sexo, orientação sexual, identidade de gênero, preferências pessoais, conversação ou até características físicas - de modo a tornar a experiência na plataforma mais agradável a ambas partes. Isso ocorre ao favorecer as preferências dos clientes, suprindo versatilmente suas necessidades; ou ao abrir os prestadores a um seleto mercado. Ou seja, a liberdade de escolha está no centro de todo o projeto.    </p>
+        <div style="background: #222222; padding: 32px 0 16px 0; text-align: center;">
+        <h1 style="font-size:2.5rem; color:#990012; margin-bottom: 12px;">Bem-vindo à Shining Star</h1>
+        <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem; color: #d6d6d6;">
+            A Shining Star é uma startup inovadora dedicada a transformar a forma como pessoas se conectam para experiências únicas, seguras e personalizadas. Nossa missão é criar um ambiente digital acolhedor, onde liberdade, respeito e privacidade são prioridades, promovendo conexões autênticas e valorizando a diversidade. Descubra novas possibilidades e brilhe com a gente!
+        </p>
+    </div>
 
-    <p>Os serviços divulgados são inúmeros, para diferentes funções e necessidades, como: garoto(a) de programa, acompanhante de evento, acompanhante de casa, entre outros - os quais poderão ser completamente definidos pelo(a) próprio(a) prestador(a) de serviços, evidenciando suas características e como ocorrerá. </p>
+    <div class="container">
+        <!-- Quem Somos -->
+        <section class="section" id="quem-somos">
+            <h1 class="section-title">Quem somos nós</h1>
+            <div class="flex">
+                <div style="flex:2">
+                    <p>Somos uma empresa de tecnologia voltada para a divulgação individual de serviços oferecidos por diferentes pessoas para suprir a demanda de seus clientes. Atuamos como filtradores e coletores de clientes — seja por região, sexo, orientação sexual, identidade de gênero, preferências pessoais, conversação ou até características físicas — tornando a experiência na plataforma mais agradável a ambas as partes. A liberdade de escolha está no centro de todo o projeto.</p>
+                    <p>Os serviços divulgados são inúmeros, para diferentes funções e necessidades, como: garoto(a) de programa, acompanhante de evento, acompanhante de casa, entre outros — todos definidos pelo(a) próprio(a) prestador(a).</p>
+                    <p>Prezamos pela privacidade dos nossos clientes e pela avaliação justa de todos os envolvidos, promovendo satisfação sexual e interna sem julgamentos ou preconceitos.</p>
+                </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                    <img src="Images/logo3.png" alt="Logo Shining Star" style="width:120px; margin-bottom:16px;">
+                    <img src="Images/nome.png" alt="Nome Shining Star" style="width:120px;">
+                </div>
+            </div>
+        </section>
 
-    <p>Para garantir um bom funcionamento das relações de prestação de serviço, a plataforma contará com sistemas de avaliação tanto do indivíduo que oferecesse o serviço, quanto do que receberá o serviço. Assim, a pontuação de 5 estrelas máximas mostrará sua face qualitativa, enquanto um indicador quantitativo também disponibilizado auxiliará na análise desse histórico de cada perfil. Prezamos pela privacidade dos nossos clientes, portanto o histórico desses usuários só é acessível pelos prestadores de serviço, enquanto os serviços prestados só serão vistos pelos clientes interessados nesses serviços.</p>
+        <!-- Logo e Significado -->
+        <section class="section" id="logo-significado">
+            <h2 class="section-title">Nossa Logo</h2>
+            <div class="logo-desc">
+                <img src="Images/estrela.png" alt="Logo Estrela">
+                <div>
+                    <p>A logo foi inspirada nos serviços disponíveis e na proposta de dar visibilidade a quem trabalha nesse ramo. A estrela de 8 pontas representa criação, união, proteção e segurança — valores centrais da nossa empresa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Missão, Visão, Valores -->
+        <section class="section" id="missao-visao-valores">
+            <h2 class="section-title">Missão, Visão e Valores</h2>
+            <div class="flex">
+                <div class="card">
+                    <img src="Images/mission.png" class="icon" alt="Missão">
+                    <h3>Missão</h3>
+                    <p>Restaurar e potencializar a afinidade entre indivíduos, promovendo relações interpessoais mais versáteis, eróticas ou emocionais, fortalecendo vínculos por meio de atendimentos individuais.</p>
+                </div>
+                <div class="card">
+                    <img src="Images/vision.png" class="icon" alt="Visão">
+                    <h3>Visão</h3>
+                    <p>Facilitar conexões, garantir segurança e promover autoconfiança relacional, com base em três pilares: segurança, praticidade e confiança.</p>
+                </div>
+                <div class="card">
+                    <img src="Images/values.png" class="icon" alt="Valores">
+                    <h3>Valores</h3>
+                    <ul>
+                        <li>Diversidade</li>
+                        <li>Vigilância constante</li>
+                        <li>Consentimento</li>
+                        <li>Liberdade de expressão sexual</li>
+                        <li>Cliente no controle</li>
+                        <li>Privacidade, respeito e segurança</li>
+                        <li>Satisfação pessoal e vínculo</li>
+                        <li>Funcionalidade</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funcionalidades -->
+        <section class="section" id="funcionalidades">
+            <h2 class="section-title">Funcionalidades da Plataforma</h2>
+            <div class="flex">
+                <div class="card">
+                    <h3>Modalidades de Serviço</h3>
+                    <ul>
+                        <li>Programas sexuais</li>
+                        <li>Acompanhante de eventos</li>
+                        <li>Acompanhante de casa</li>
+                        <li>Namorada de aluguel</li>
+                        <li>Companhia para solidão</li>
+                        <li>Outros personalizados</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Perfil Personalizado</h3>
+                    <p>Prestadores e usuários criam perfis detalhados, com informações, fotos e preferências, garantindo conexões customizadas.</p>
+                </div>
+                <div class="card">
+                    <h3>Posts e Moments</h3>
+                    <p>Prestadores podem postar fotos e vídeos (tipo Stories), aumentando engajamento e visibilidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Planos e Níveis de Conta -->
+        <section class="section" id="planos">
+            <h2 class="section-title">Planos e Níveis de Conta</h2>
+            <table class="plan-table">
+                <tr>
+                    <th>Plano</th>
+                    <th>Chat</th>
+                    <th>Pedidos/mês</th>
+                    <th>Agenda</th>
+                    <th>Preferências Fenotípicas</th>
+                    <th>Fotos Privadas</th>
+                </tr>
+                <tr>
+                    <td>Normal</td>
+                    <td>2/semana</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Bronze</td>
+                    <td>4/semana</td>
+                    <td>4</td>
+                    <td>Sim</td>
+                    <td>Sim</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Silver</td>
+                    <td>6/semana</td>
+                    <td>5</td>
+                    <td>Sim</td>
+                    <td>Sim</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Gold</td>
+                    <td>Ilimitado</td>
+                    <td>Ilimitado</td>
+                    <td>Sim</td>
+                    <td>Sim</td>
+                    <td>Ilimitado</td>
+                </tr>
+            </table>
+            <p style="margin-top:8px; font-size:0.95em;">*Planos para prestadores possuem benefícios similares, incluindo destaque, merchandising e ferramentas exclusivas.</p>
+        </section>
+
+        <!-- Segurança -->
+        <section class="section" id="seguranca">
+            <h2 class="section-title">Segurança e Privacidade</h2>
+            <div class="flex">
+                <div class="card">
+                    <h3>Verificação de Conta</h3>
+                    <ul>
+                        <li>Foto com documento</li>
+                        <li>Verificação em duas etapas</li>
+                        <li>Verificação de IP e CPF/RG</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Botão Socorro</h3>
+                    <p>Ferramenta de emergência que compartilha localização com a polícia em caso de perigo.</p>
+                </div>
+                <div class="card">
+                    <h3>Proteção de Dados</h3>
+                    <p>Criptografia avançada (AES-256), acesso restrito e monitoramento constante dos dados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Merchandising -->
+        <section class="section" id="merchandising">
+            <h2 class="section-title">Merchandising</h2>
+            <div class="flex">
+                <div>
+                    <img src="Images/camiseta.png" alt="Camiseta" class="merch-img">
+                    <img src="Images/boné.png" alt="Boné" class="merch-img">
+                    <img src="Images/brinquedo.png" alt="Brinquedo Sexual" class="merch-img">
+                    <img src="Images/chaveiro.png" alt="Chaveiro" class="merch-img">
+                </div>
+                <div>
+                    <ul>
+                        <li>Brinquedos sexuais exclusivos</li>
+                        <li>Camisetas, bonés e roupas íntimas</li>
+                        <li>Chaveiros personalizados</li>
+                        <li>Benefícios mensais para assinantes Gold</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Público Alvo -->
+        <section class="section" id="publico-alvo">
+            <h2 class="section-title">Público Alvo</h2>
+            <div class="flex">
+                <div class="card">
+                    <h3>Usuários</h3>
+                    <p>Jovens entre 20 e 35 anos, buscando qualidade, agilidade e personalização na contratação de serviços.</p>
+                </div>
+                <div class="card">
+                    <h3>Prestadores</h3>
+                    <p>Profissionais que desejam maior visibilidade, segurança e benefícios exclusivos para alavancar seus negócios.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketing e Redes Sociais -->
+        <section class="section" id="marketing">
+            <h2 class="section-title">Marketing & Redes Sociais</h2>
+            <div class="flex">
+                <div class="card">
+                    <h3>Redes Ativas</h3>
+                    <ul>
+                        <li>Instagram: <a href="#">@shiningstar.br</a></li>
+                        <li>X (Twitter)</li>
+                        <li>Youtube (Podcast)</li>
+                        <li>TikTok</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Promoções & Engajamento</h3>
+                    <ul>
+                        <li>Códigos promocionais mensais</li>
+                        <li>Posts sobre saúde sexual e fetiches</li>
+                        <li>Eventos especiais em datas comemorativas</li>
+                        <li>Shout-outs para prestadores</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Ps -->
+        <section class="section" id="4ps">
+            <h2 class="section-title">Os 4 P's</h2>
+            <div class="flex">
+                <div class="card"><h3>Preço</h3><p>A definir.</p></div>
+                <div class="card"><h3>Praça</h3><p>Atuação digital, com foco em site e aplicativo. Escritórios apenas para logística e administração.</p></div>
+                <div class="card"><h3>Produto</h3><p>Plataforma de divulgação individual de serviços e comércios para suprir necessidades pessoais e afetivas.</p></div>
+                <div class="card"><h3>Promoção</h3><p>Divulgação em redes sociais, promoções, merchandising e tráfego pago.</p></div>
+            </div>
+        </section>
+    </div>
 
    <div class="footer-container">
         <footer>
