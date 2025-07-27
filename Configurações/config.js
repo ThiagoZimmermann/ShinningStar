@@ -716,7 +716,7 @@ function fadeOutIn(callback) {
                         <video id="video-tutorial" class="pref-video" src="../../Images/video.mp4" controls autoplay muted></video>
                         <div class="pref-actions">
                             <button id="btn-escolher" class="pref-btn">Escolher preferências</button>
-                            <div id="btn-surpreenda" class="surprise" style="opacity:0.6; pointer-events:none;">Me surpreenda!</div>
+                            <div id="btn-surpreenda" class="surprise" style="opacity:0.6; cursor: pointer; pointer-events:none;">Me surpreenda!</div>
                         </div>
                     </div>
                 </div>
@@ -757,6 +757,26 @@ function fadeOutIn(callback) {
             const popup = document.createElement('div');
             popup.className = 'popup-bg';
             popup.innerHTML = `
+                <style>
+                    .profile-advance-btn:hover {
+                    background: #a94444;
+                    transform: translateY(-8px);
+                }
+
+                                    .profile-advance-btn {
+                        background: #803333;
+                        color: #fff;
+                        border: none;
+                        border-radius: 8px;
+                        padding: 14px 38px;
+                        font-size: 1.1em;
+                        font-family: 'Agrandir', sans-serif;
+                        cursor: pointer;
+                        margin-top: 18px;
+                        transition: background 0.2s, transform 0.2s;
+                    }
+                        
+                </style>
                 <div class="popup-content">
                     <h2 style="margin-bottom:18px;">Quais são seus serviços de interesse?</h2>
                     <input type="text" class="service-search" placeholder="Pesquisar serviço...">
@@ -804,7 +824,7 @@ function fadeOutIn(callback) {
                             </div>
                         </div>
                     </div>
-                    <button class="profile-advance-btn" id="close-popup-pref">Avançar</button>
+                    <button class="profile-advance-btn" id="profile-advance-btn">Avançar</button>
                 </div>
             `;
             document.body.appendChild(popup);
@@ -817,7 +837,7 @@ function fadeOutIn(callback) {
             });
 
             // Avançar para perfil
-            popup.querySelector('#close-popup-pref').onclick = () => {
+            popup.querySelector('#profile-advance-btn').onclick = () => {
                 popup.classList.add('fadeOut');
                 setTimeout(() => {
                     document.body.removeChild(popup);
@@ -885,7 +905,7 @@ function fadeOutIn(callback) {
                         margin-bottom: 18px;
                     }
                     .profile-tag {
-                        background: #ffd700;
+                        background: #949494ff;
                         color: #803333;
                         border-radius: 18px;
                         padding: 8px 18px;
