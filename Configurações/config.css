@@ -2,13 +2,13 @@ body {
     font: normal 15pt Agrandir;
     background-color: rgba(195, 195, 195, 0.156);
     text-align: center;
+    
+    font-family: 'Agrandir', sans-serif;
 }
 
 body, input, button, select, textarea, h1, h2, h3, h4, h5, h6, div, span, p, label {
     font-family: 'Agrandir', sans-serif !important;
 }
-
-
 
 @font-face {
     font-family: 'Agrandir';
