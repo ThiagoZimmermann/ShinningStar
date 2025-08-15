@@ -197,55 +197,20 @@ function showServiceInterestCLIENTE() {
         <div class="service-page">
             <h1>Quais são seus serviços de interesse?</h1>
             <div class="service-search-row">
-                <input type="text" class="service-search" placeholder="Pesquisar serviço...">
+                <input type="text" class="service-search" id="service-search-input-cliente" placeholder="Pesquisar serviço...">
                 <button class="service-advance-btn" id="btn-avancar-servico">Avançar</button>
             </div>
-            <div class="service-columns">
+            <div class="service-columns" id="service-columns-cliente">
                 <div class="service-col">
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Programas sexuais</div>
-                            <div class="service-desc">Atendimento íntimo conforme os limites e preferências definidas pelo prestador(a), podendo variar em tipo, duração e abordagem.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Acompanhante de eventos</div>
-                            <div class="service-desc">Presença em eventos sociais, festas ou encontros, oferecendo companhia, conversa e apoio social.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Acompanhante de casa</div>
-                            <div class="service-desc">Companhia em ambiente doméstico para interações sociais, emocionais ou de lazer.</div>
-                        </div>
-                    </div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Programas sexuais</div><div class="service-desc">Atendimento íntimo conforme os limites e preferências definidas pelo prestador(a), podendo variar em tipo, duração e abordagem.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de eventos</div><div class="service-desc">Presença em eventos sociais, festas ou encontros, oferecendo companhia, conversa e apoio social.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de casa</div><div class="service-desc">Companhia em ambiente doméstico para interações sociais, emocionais ou de lazer.</div></div></div>
                 </div>
                 <div class="service-col">
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Namorada(o) de aluguel (acompanhante momentânea/o)</div>
-                            <div class="service-desc">Simulação de relacionamento romântico por um período específico, podendo incluir interações presenciais e virtuais.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Companhia para solidão / tratamento emocional</div>
-                            <div class="service-desc">Foco no apoio emocional, escuta ativa e interação para lidar com sentimentos de solidão, ansiedade ou carência afetiva.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Validação de sentimentos (“mommy issues” e similares)</div>
-                            <div class="service-desc">Interações personalizadas para suprir necessidades afetivas e de validação emocional, conforme o papel ou dinâmica acordada.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Outros programas definidos pelo prestador(a)</div>
-                            <div class="service-desc">Serviços criados livremente pelo profissional, com descrição própria, adaptados às demandas ou fetiches específicos do cliente.</div>
-                        </div>
-                    </div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Namorada(o) de aluguel (acompanhante momentânea/o)</div><div class="service-desc">Simulação de relacionamento romântico por um período específico, podendo incluir interações presenciais e virtuais.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Companhia para solidão / tratamento emocional</div><div class="service-desc">Foco no apoio emocional, escuta ativa e interação para lidar com sentimentos de solidão, ansiedade ou carência afetiva.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Validação de sentimentos (“mommy issues” e similares)</div><div class="service-desc">Interações personalizadas para suprir necessidades afetivas e de validação emocional, conforme o papel ou dinâmica acordada.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Outros programas definidos pelo prestador(a)</div><div class="service-desc">Serviços criados livremente pelo profissional, com descrição própria, adaptados às demandas ou fetiches específicos do cliente.</div></div></div>
                 </div>
             </div>
         </div>
@@ -255,6 +220,17 @@ function showServiceInterestCLIENTE() {
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('click', function () {
             this.classList.toggle('selected');
+        });
+    });
+
+    // Pesquisa funcional
+    const searchInput = document.getElementById('service-search-input-cliente');
+    const columns = document.getElementById('service-columns-cliente');
+    searchInput.addEventListener('input', function () {
+        const val = this.value.trim().toLowerCase();
+        columns.querySelectorAll('.service-card').forEach(card => {
+            const title = card.querySelector('.service-title').textContent.toLowerCase();
+            card.style.display = (!val || title.includes(val)) ? '' : 'none';
         });
     });
 
@@ -541,9 +517,409 @@ function showProviderPreferencesCLIENTE() {
                 font-weight: bold;
                 margin-left: 4px;
             }
+            .fetiche-row {
+                margin: 18px 0 18px 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .fetiche-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 8px 18px;
+                font-size: 1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-bottom: 6px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .fetiche-btn.selected {
+                background: #ffd700;
+                color: #803333;
+            }
+            .profile-advance-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 38px;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-top: 18px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .profile-advance-btn:hover {
+                background: #a94444;
+                transform: translateY(-8px);
+            }
         </style>
         <div class="pref-page">
-            <h1>Características pessoais e do serviço</h1>
+            <h1>Quais são seus serviços de interesse?</h1>
+            <div class="service-search-row">
+                <input type="text" class="service-search" id="service-search-input-cliente" placeholder="Pesquisar serviço...">
+                <button class="service-advance-btn" id="btn-avancar-servico">Avançar</button>
+            </div>
+            <div class="service-columns" id="service-columns-cliente">
+                <div class="service-col">
+                    <div class="service-card"><div class="service-info"><div class="service-title">Programas sexuais</div><div class="service-desc">Atendimento íntimo conforme os limites e preferências definidas pelo prestador(a), podendo variar em tipo, duração e abordagem.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de eventos</div><div class="service-desc">Presença em eventos sociais, festas ou encontros, oferecendo companhia, conversa e apoio social.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de casa</div><div class="service-desc">Companhia em ambiente doméstico para interações sociais, emocionais ou de lazer.</div></div></div>
+                </div>
+                <div class="service-col">
+                    <div class="service-card"><div class="service-info"><div class="service-title">Namorada(o) de aluguel (acompanhante momentânea/o)</div><div class="service-desc">Simulação de relacionamento romântico por um período específico, podendo incluir interações presenciais e virtuais.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Companhia para solidão / tratamento emocional</div><div class="service-desc">Foco no apoio emocional, escuta ativa e interação para lidar com sentimentos de solidão, ansiedade ou carência afetiva.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Validação de sentimentos (“mommy issues” e similares)</div><div class="service-desc">Interações personalizadas para suprir necessidades afetivas e de validação emocional, conforme o papel ou dinâmica acordada.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Outros programas definidos pelo prestador(a)</div><div class="service-desc">Serviços criados livremente pelo profissional, com descrição própria, adaptados às demandas ou fetiches específicos do cliente.</div></div></div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Seleção dos cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', function () {
+            this.classList.toggle('selected');
+        });
+    });
+
+    // Pesquisa funcional
+    const searchInput = document.getElementById('service-search-input-cliente');
+    const columns = document.getElementById('service-columns-cliente');
+    searchInput.addEventListener('input', function () {
+        const val = this.value.trim().toLowerCase();
+        columns.querySelectorAll('.service-card').forEach(card => {
+            const title = card.querySelector('.service-title').textContent.toLowerCase();
+            card.style.display = (!val || title.includes(val)) ? '' : 'none';
+        });
+    });
+
+    document.getElementById('btn-avancar-servico').onclick = () => {
+        fadeOutIn(showProviderPreferencesCLIENTE);
+    };
+}
+
+function showProviderPreferencesCLIENTE() {
+    document.getElementById('app').innerHTML = `
+        <style>
+            .pref-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Agrandir', sans-serif;
+                margin-top: 40px;
+            }
+            .pref-page h1 {
+                margin-bottom: 18px;
+            }
+            .pref-warning {
+                font-size: 1.1em;
+                color: #a94444;
+                margin-bottom: 32px;
+                font-weight: bold;
+            }
+            .pref-content {
+                display: flex;
+                gap: 40px;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 24px;
+            }
+            .pref-video {
+                width: 380px;
+                height: 220px;
+                border-radius: 16px;
+                background: #ddd;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            }
+            .pref-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 22px;
+                margin-top: 18px;
+            }
+            .pref-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 32px;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+                opacity: 0.6;
+                pointer-events: none;
+            }
+            .pref-btn.enabled {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .pref-btn:active {
+                transform: scale(0.96);
+                filter: brightness(0.93);
+            }
+            .surprise {
+                margin-top: 18px;
+                font-weight: bold;
+                font-size: 1.1em;
+                color: #ffd700;
+                background: #803333;
+                border-radius: 8px;
+                padding: 8px 18px;
+                text-align: center;
+                width: fit-content;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .surprise:active {
+                transform: scale(0.96);
+                filter: brightness(0.93);
+            }
+            .popup-bg {
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.35);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                animation: fadeInBg 0.4s;
+            }
+            @keyframes fadeInBg {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            .popup-content {
+                background: #fff;
+                border-radius: 18px;
+                padding: 32px 38px;
+                min-width: 420px;
+                max-width: 95vw;
+                max-height: 90vh;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+                animation: popupIn 0.4s;
+                overflow-y: auto;
+            }
+            @keyframes popupIn {
+                from { transform: scale(0.85); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+            .service-search {
+                width: 320px;
+                max-width: 90vw;
+                padding: 12px 18px;
+                font-size: 1.1em;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-family: 'Agrandir', sans-serif;
+                margin-bottom: 22px;
+            }
+            .service-card {
+                display: flex;
+                background: #f2f2f2;
+                border-radius: 14px;
+                padding: 16px;
+                gap: 16px;
+                align-items: flex-start;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                border: 2px solid transparent;
+                transition: background 0.2s, border 0.2s;
+                margin-bottom: 12px;
+            }
+            .service-card.selected {
+                background: #803333;
+                border: 2px solid #a94444;
+            }
+            .service-card.selected .service-title,
+            .service-card.selected .service-desc {
+                color: #fff;
+            }
+            .service-img {
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
+                object-fit: cover;
+                background: #ddd;
+            }
+            .service-info {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            .service-title {
+                font-weight: bold;
+                font-size: 1.1em;
+                margin-bottom: 4px;
+                font-family: 'Agrandir', sans-serif;
+                color: #803333;
+                transition: color 0.2s;
+            }
+            .service-desc {
+                font-size: 0.98em;
+                color: #555;
+                font-family: 'Agrandir', sans-serif;
+                transition: color 0.2s;
+            }
+            .close-popup-btn {
+                margin-top: 18px;
+                background: #a94444;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 24px;
+                font-size: 1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .close-popup-btn:hover {
+                background: #803333;
+            }
+            .slider-label {
+                margin-bottom: 6px;
+                font-weight: bold;
+            }
+            .slider-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 18px;
+            }
+            .slider-value {
+                min-width: 40px;
+                font-weight: bold;
+            }
+            .skin-row {
+                margin-bottom: 18px;
+            }
+            .skin-label {
+                font-weight: bold;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .skin-grid {
+                display: flex;
+                gap: 6px;
+                margin-bottom: 8px;
+            }
+            .skin-cell {
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                border: 2px solid transparent;
+                cursor: pointer;
+                transition: border 0.2s;
+            }
+            .skin-cell.selected {
+                border: 2px solid #803333;
+            }
+            .keywords-label {
+                font-weight: bold;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .keywords-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .keywords-input {
+                padding: 8px 14px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-size: 1em;
+                font-family: 'Agrandir', sans-serif;
+                width: 180px;
+            }
+            .keywords-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 8px 18px;
+                font-size: 1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .keywords-btn:hover {
+                background: #a94444;
+                transform: translateY(-6px);
+            }
+            .keywords-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 10px;
+            }
+            .keywords-tag {
+                background: #949494ff;
+                color: #803333;
+                border-radius: 18px;
+                padding: 6px 14px;
+                font-weight: bold;
+                font-size: 1em;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .keywords-tag .remove-tag {
+                background: none;
+                border: none;
+                color: #a94444;
+                font-size: 1.1em;
+                cursor: pointer;
+                font-weight: bold;
+                margin-left: 4px;
+            }
+            .fetiche-row {
+                margin: 18px 0 18px 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .fetiche-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 8px 18px;
+                font-size: 1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-bottom: 6px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .fetiche-btn.selected {
+                background: #ffd700;
+                color: #803333;
+            }
+            .profile-advance-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 38px;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-top: 18px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .profile-advance-btn:hover {
+                background: #a94444;
+                transform: translateY(-8px);
+            }
+        </style>
+        <div class="pref-page">
+            <h1>Preferências de prestadores</h1>
             <div class="pref-warning">Atenção, assista ao seguinte vídeo para prosseguir.</div>
             <div class="pref-content">
                 <video id="video-tutorial" class="pref-video" src="../../Images/video.mp4" controls autoplay muted></video>
@@ -745,20 +1121,6 @@ function showPreferencesPopupCLIENTE() {
             }
         </style>
         <div class="popup-content">
-            <div class="popup-title">Você se identifica:</div>
-            <div class="fetiche-row" id="fetiche-row">
-                <button class="fetiche-btn">Com fetiche</button>
-                <button class="fetiche-btn">Completo</button>
-                <button class="fetiche-btn">Mommy issues</button>
-                <button class="fetiche-btn">Fantasia</button>
-                <button class="fetiche-btn">Furrie</button>
-                <button class="fetiche-btn">Gay</button>
-                <button class="fetiche-btn">BDSM</button>
-                <button class="fetiche-btn">Sugar</button>
-                <button class="fetiche-btn">Casal</button>
-                <button class="fetiche-btn">Trans</button>
-                <button class="fetiche-btn">Outros</button>
-            </div>
             <div class="slider-label">Altura (m):</div>
             <div class="slider-row">
                 <input type="range" min="1" max="2" step="0.01" id="altura-slider" value="1.70" style="width:180px;">
@@ -1081,7 +1443,7 @@ function showProfilePageCLIENTE() {
                 </div>
                 <div id="profile-tags-row" class="profile-tags-row"></div>
                 <div class="profile-doc-section">
-                    <span class="profile-doc-label">RG</span>
+                    <span class="profile-doc-label">Documento que comprove maioridade</span>
                     <div class="profile-doc-upload">
                         <img id="profile-doc-preview" class="profile-doc-preview" src="" alt="RG">
                         <input type="file" id="profile-doc-input" accept="image/*,application/pdf">
@@ -1153,120 +1515,7 @@ function showProfilePageCLIENTE() {
 
     // Avançar agora vai para tela de post
     document.getElementById('profile-advance-btn').onclick = () => {
-        fadeOutIn(showFirstPostCLIENTE);
-    };
-}
-
-function showFirstPostCLIENTE() {
-    document.getElementById('app').innerHTML = `
-        <style>
-            .first-post-page {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-family: 'Agrandir', sans-serif;
-                min-height: 90vh;
-                background: #f9f6f2;
-                padding-top: 40px;
-            }
-            .first-post-card {
-                background: #fff;
-                border-radius: 18px;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-                padding: 38px 44px 32px 44px;
-                max-width: 480px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 32px;
-                border: 1.5px solid #e5e2e0;
-            }
-            .first-post-title {
-                font-size: 1.6em;
-                color: #803333;
-                margin-bottom: 24px;
-                font-weight: bold;
-            }
-            .first-post-photo-upload {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 18px;
-            }
-            .first-post-photo-preview {
-                width: 180px;
-                height: 180px;
-                border-radius: 16px;
-                background: #eee;
-                object-fit: cover;
-                margin-bottom: 12px;
-                border: 2px solid #803333;
-                box-shadow: 0 2px 8px rgba(128,51,51,0.08);
-                display: none;
-            }
-            .first-post-desc-label {
-                font-weight: bold;
-                color: #803333;
-                margin-bottom: 6px;
-                display: block;
-            }
-            .first-post-desc {
-                width: 100%;
-                min-height: 60px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 1.05em;
-                font-family: 'Agrandir', sans-serif;
-                padding: 10px 16px;
-                resize: vertical;
-                margin-bottom: 18px;
-            }
-            .first-post-btn {
-                background: #803333;
-                color: #fff;
-                border: none;
-                border-radius: 8px;
-                padding: 14px 38px;
-                font-size: 1.1em;
-                font-family: 'Agrandir', sans-serif;
-                cursor: pointer;
-                margin-top: 18px;
-                transition: background 0.2s, transform 0.2s;
-                width: 100%;
-                max-width: 240px;
-                align-self: center;
-            }
-            .first-post-btn:hover {
-                background: #a94444;
-                transform: translateY(-8px);
-            }
-        </style>
-        <div class="first-post-page">
-            <div class="first-post-card">
-                <div class="first-post-title">Faça seu primeiro post</div>
-                <div class="first-post-photo-upload">
-                    <img id="first-post-photo-preview" class="first-post-photo-preview" src="" alt="Foto do post">
-                    <input type="file" id="first-post-photo-input" accept="image/*">
-                </div>
-                <label class="first-post-desc-label" for="first-post-desc">Descrição do post:</label>
-                <textarea id="first-post-desc" class="first-post-desc" placeholder="Descreva seu serviço, diferencial, etc."></textarea>
-                <button class="first-post-btn" id="first-post-btn">Avançar</button>
-            </div>
-        </div>
-    `;
-    // Foto preview
-    const photoInput = document.getElementById('first-post-photo-input');
-    const photoPreview = document.getElementById('first-post-photo-preview');
-    photoInput.onchange = function () {
-        if (this.files && this.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photoPreview.src = e.target.result;
-                photoPreview.style.display = 'block';
-            };
-            reader.readAsDataURL(this.files[0]);
-        }
+        fadeOutIn(showAccountLevelsCLIENTE);
     };
 }
 
@@ -1380,49 +1629,50 @@ function showAccountLevelsCLIENTE() {
                     <div class="level-header bronze">Bronze</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Atualização de fotos por perfil limitada: 6 fotos por perfil que não podem ser mudadas;</li>
-                            <li>Sem memories (stories);</li>
-                            <li>Serviços limitados até 4 por mês;</li>
-                            <li>Baixa recomendação do perfil para os usuários.</li>
+                            <li>Conta: conta por IP e documento, preço por mês;</li>
+                            <li>Chat expandido até 4 pessoas por semana;</li>
+                            <li>Pedidos limitados de 4 por mês;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento.</li>
+                            <li>Preferência particulares fenotípicas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo bronze">Ser Bronze</div>
-                    <button class="level-btn bronze" onclick='window.location.href = "homeprestador.html"'>R$ 19,90</button>
+                    <button class="level-btn bronze" onclick='window.location.href = "../Entrar/entrar.html"'>R$ 19,90</button>
                 </div>
                 <div class="level-card">
                     <div class="level-header prata">Silver</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Atualização de fotos por perfil limitada: 8 fotos que não podem ser mudadas por perfil;</li>
-                            <li>2 Memories por semana, sem apagar e postar novamente;</li>
-                            <li>Serviços limitados de até 6 por mês;</li>
-                            <li>Maior recomendação na área escolhida;</li>
-                            <li>Sistema de filtro de comentário.</li>
+                            <li>Conta: por IP e documento, preço por mês;</li>
+                            <li>Chat expandido até 6 pessoas por semana;</li>
+                            <li>Pedidos por mês limitados de 5 por mês;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
+                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
+                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
+                            <li>Preferências particulares fenotípicas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo prata">Ser Silver</div>
-                    <button class="level-btn prata" onclick='window.location.href = "homeprestador.html"'>R$ 59,90</button>
+                    <button class="level-btn prata" onclick='window.location.href = "../Entrar/entrar.html"'>R$ 59,90</button>
                 </div>
                 <div class="level-card">
                     <div class="level-header ouro">Gold</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Fotos ilimitadas por perfil podendo mudar quantas vezes quiser, apagando etc;</li>
-                            <li>Memories ilimitados;</li>
-                            <li>Serviços ilimitados para prestar;</li>
-                            <li>Principais recomendações na área;</li>
-                            <li>Regalias todo mês, como camisetas, copos e brinquedos sexuais totalmente de graça;</li>
-                            <li>Sistema de filtro de comentário;</li>
-                            <li>Participação no instagram da marca para impulsionar os serviços→ shoutout uma vez por semana de alguém que faz os serviços no instagram com posts que revelem um pouco mais sobre o trabalho dela;</li>
-                            <li>Placa de reconhecimento por número de serviços→ cria um vínculo com o cliente;</li>
-                            <li>Possibilidade de postar um vídeo ou foto de um certo modo, podendo ser mais sensual ou voltada para seu conteúdo. Esta foto será bloqueada aos usuários que não possuem o premium→ por exemplo um vídeo específico fazendo algo que gere desejo.</li>
+                            <li>Conta: por IP e documento, preço por mês;</li>
+                            <li>Chat expandido ilimitado;</li>
+                            <li>Pedidos por mês ilimitado;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
+                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
+                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
+                            <li>Preferência particulares fenotípicas;</li>
+                            <li>Escolha de serviços por preço específico (por faixa de preço);</li>
+                            <li>1 Mês grátis ao pagar uma anuidade;</li>
+                            <li>Fotos privadas ilimitadas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo ouro">Ser Gold</div>
-                    <button class="level-btn ouro" onclick='window.location.href = "homeprestador.html"'>R$ 79,90</button>
+                    <button class="level-btn ouro" onclick='window.location.href = "../Entrar/entrar.html"'>R$ 79,90</button>
                 </div>
             </div>
         </div>
@@ -1610,55 +1860,20 @@ function showServiceInterestPRESTADOR() {
         <div class="service-page">
             <h1>Quais são os serviços que você deseja disponibilizar?</h1>
             <div class="service-search-row">
-                <input type="text" class="service-search" placeholder="Pesquisar serviço...">
+                <input type="text" class="service-search" id="service-search-input-prestador" placeholder="Pesquisar serviço...">
                 <button class="service-advance-btn" id="btn-avancar-servico-prestador">Avançar</button>
             </div>
-            <div class="service-columns">
+            <div class="service-columns" id="service-columns-prestador">
                 <div class="service-col">
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Programas sexuais</div>
-                            <div class="service-desc">Atendimento íntimo conforme os limites e preferências definidas pelo prestador(a), podendo variar em tipo, duração e abordagem.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Acompanhante de eventos</div>
-                            <div class="service-desc">Presença em eventos sociais, festas ou encontros, oferecendo companhia, conversa e apoio social.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Acompanhante de casa</div>
-                            <div class="service-desc">Companhia em ambiente doméstico para interações sociais, emocionais ou de lazer.</div>
-                        </div>
-                    </div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Programas sexuais</div><div class="service-desc">Atendimento íntimo conforme os limites e preferências definidas pelo prestador(a), podendo variar em tipo, duração e abordagem.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de eventos</div><div class="service-desc">Presença em eventos sociais, festas ou encontros, oferecendo companhia, conversa e apoio social.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Acompanhante de casa</div><div class="service-desc">Companhia em ambiente doméstico para interações sociais, emocionais ou de lazer.</div></div></div>
                 </div>
                 <div class="service-col">
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Namorada(o) de aluguel (acompanhante momentânea/o)</div>
-                            <div class="service-desc">Simulação de relacionamento romântico por um período específico, podendo incluir interações presenciais e virtuais.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Companhia para solidão / tratamento emocional</div>
-                            <div class="service-desc">Foco no apoio emocional, escuta ativa e interação para lidar com sentimentos de solidão, ansiedade ou carência afetiva.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Validação de sentimentos (“mommy issues” e similares)</div>
-                            <div class="service-desc">Interações personalizadas para suprir necessidades afetivas e de validação emocional, conforme o papel ou dinâmica acordada.</div>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-info">
-                            <div class="service-title">Outros programas definidos pelo prestador(a)</div>
-                            <div class="service-desc">Serviços criados livremente pelo profissional, com descrição própria, adaptados às demandas ou fetiches específicos do cliente.</div>
-                        </div>
-                    </div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Namorada(o) de aluguel (acompanhante momentânea/o)</div><div class="service-desc">Simulação de relacionamento romântico por um período específico, podendo incluir interações presenciais e virtuais.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Companhia para solidão / tratamento emocional</div><div class="service-desc">Foco no apoio emocional, escuta ativa e interação para lidar com sentimentos de solidão, ansiedade ou carência afetiva.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Validação de sentimentos (“mommy issues” e similares)</div><div class="service-desc">Interações personalizadas para suprir necessidades afetivas e de validação emocional, conforme o papel ou dinâmica acordada.</div></div></div>
+                    <div class="service-card"><div class="service-info"><div class="service-title">Outros programas definidos pelo prestador(a)</div><div class="service-desc">Serviços criados livremente pelo profissional, com descrição própria, adaptados às demandas ou fetiches específicos do cliente.</div></div></div>
                 </div>
             </div>
         </div>
@@ -1671,7 +1886,17 @@ function showServiceInterestPRESTADOR() {
         });
     });
 
-    // Corrigido: ID do botão para prestador
+    // Pesquisa funcional
+    const searchInput = document.getElementById('service-search-input-prestador');
+    const columns = document.getElementById('service-columns-prestador');
+    searchInput.addEventListener('input', function () {
+        const val = this.value.trim().toLowerCase();
+        columns.querySelectorAll('.service-card').forEach(card => {
+            const title = card.querySelector('.service-title').textContent.toLowerCase();
+            card.style.display = (!val || title.includes(val)) ? '' : 'none';
+        });
+    });
+
     document.getElementById('btn-avancar-servico-prestador').onclick = () => {
         fadeOutIn(showProviderPreferencesPRESTADOR);
     };
@@ -2197,20 +2422,6 @@ function showPreferencesPopupPRESTADOR() {
             }
         </style>
         <div class="popup-content">
-            <div class="popup-title">Você se identifica:</div>
-            <div class="fetiche-row" id="fetiche-row">
-                <button class="fetiche-btn">Com fetiche</button>
-                <button class="fetiche-btn">Completo</button>
-                <button class="fetiche-btn">Mommy issues</button>
-                <button class="fetiche-btn">Fantasia</button>
-                <button class="fetiche-btn">Furrie</button>
-                <button class="fetiche-btn">Gay</button>
-                <button class="fetiche-btn">BDSM</button>
-                <button class="fetiche-btn">Sugar</button>
-                <button class="fetiche-btn">Casal</button>
-                <button class="fetiche-btn">Trans</button>
-                <button class="fetiche-btn">Outros</button>
-            </div>
             <div class="slider-label">Altura (m):</div>
             <div class="slider-row">
                 <input type="range" min="1" max="2" step="0.01" id="altura-slider" value="1.70" style="width:180px;">
@@ -2720,6 +2931,10 @@ function showFirstPostPRESTADOR() {
             reader.readAsDataURL(this.files[0]);
         }
     };
+    // Avançar agora vai para tela de post
+    document.getElementById('first-post-btn').onclick = () => {
+        fadeOutIn(showAccountLevelsPRESTADOR);
+    };
 }
 
 function showAccountLevelsPRESTADOR() {
@@ -2832,11 +3047,11 @@ function showAccountLevelsPRESTADOR() {
                     <div class="level-header bronze">Bronze</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Atualização de fotos por perfil limitada: 6 fotos por perfil que não podem ser mudadas;</li>
-                            <li>Sem memories (stories);</li>
-                            <li>Serviços limitados até 4 por mês;</li>
-                            <li>Baixa recomendação do perfil para os usuários.</li>
+                            <li>Conta: conta por IP e documento, preço por mês;</li>
+                            <li>Chat expandido até 4 pessoas por semana;</li>
+                            <li>Pedidos limitados de 4 por mês;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento.</li>
+                            <li>Preferência particulares fenotípicas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo bronze">Ser Bronze</div>
@@ -2846,12 +3061,13 @@ function showAccountLevelsPRESTADOR() {
                     <div class="level-header prata">Silver</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Atualização de fotos por perfil limitada: 8 fotos que não podem ser mudadas por perfil;</li>
-                            <li>2 Memories por semana, sem apagar e postar novamente;</li>
-                            <li>Serviços limitados de até 6 por mês;</li>
-                            <li>Maior recomendação na área escolhida;</li>
-                            <li>Sistema de filtro de comentário.</li>
+                            <li>Conta: por IP e documento, preço por mês;</li>
+                            <li>Chat expandido até 6 pessoas por semana;</li>
+                            <li>Pedidos por mês limitados de 5 por mês;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
+                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
+                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
+                            <li>Preferências particulares fenotípicas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo prata">Ser Silver</div>
@@ -2861,16 +3077,16 @@ function showAccountLevelsPRESTADOR() {
                     <div class="level-header ouro">Gold</div>
                     <div class="level-benefits">
                         <ul>
-                            <li>Conta por IP preço;</li>
-                            <li>Fotos ilimitadas por perfil podendo mudar quantas vezes quiser, apagando etc;</li>
-                            <li>Memories ilimitados;</li>
-                            <li>Serviços ilimitados para prestar;</li>
-                            <li>Principais recomendações na área;</li>
-                            <li>Regalias todo mês, como camisetas, copos e brinquedos sexuais totalmente de graça;</li>
-                            <li>Sistema de filtro de comentário;</li>
-                            <li>Participação no instagram da marca para impulsionar os serviços→ shoutout uma vez por semana de alguém que faz os serviços no instagram com posts que revelem um pouco mais sobre o trabalho dela;</li>
-                            <li>Placa de reconhecimento por número de serviços→ cria um vínculo com o cliente;</li>
-                            <li>Possibilidade de postar um vídeo ou foto de um certo modo, podendo ser mais sensual ou voltada para seu conteúdo. Esta foto será bloqueada aos usuários que não possuem o premium→ por exemplo um vídeo específico fazendo algo que gere desejo.</li>
+                            <li>Conta: por IP e documento, preço por mês;</li>
+                            <li>Chat expandido ilimitado;</li>
+                            <li>Pedidos por mês ilimitado;</li>
+                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
+                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
+                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
+                            <li>Preferência particulares fenotípicas;</li>
+                            <li>Escolha de serviços por preço específico (por faixa de preço);</li>
+                            <li>1 Mês grátis ao pagar uma anuidade;</li>
+                            <li>Fotos privadas ilimitadas.</li>
                         </ul>
                     </div>
                     <div class="ser-titulo ouro">Ser Gold</div>

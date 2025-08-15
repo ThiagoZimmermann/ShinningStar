@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Agrandir', sans-serif;
+    
+}
+
+#menu {
+    width: 150px;
+    background-color: #803333;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    height: 100vh;
+}
+
+#logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#config, #termos {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#center {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    margin-left: 120px; 
+}
+
+#feed {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#right {
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#circle-button {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zoom {
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoom:hover {
+    transform: scale(1.1);
+}
+
+.float-on-hover {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.float-on-hover:hover {
+    transform: translateY(-10px);
+}
+
+/* Estilos para os posts do feed */
+.post {
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    height: 87svh;
+    border-radius: 10px;
+}
+
+.post-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: auto;
+}
+
+div#termos {
+    font-size: 12px;
+    color: #ddd;
+    margin-top: auto;
+}   
+
+img#up {
+    width: 50px;
+}
+
+.post p {
+    margin-top: auto;
+    width: 120px;
+    font: Bold 15pt Agrandir;
+    color: rgb(224, 224, 224);
+
+}
+
+.post-button {
+    width: 40px; /* Reduz o tamanho do botão */
+    height: 40px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.post-button:hover {
+    transform: scale(1.1);
+}
+
+.post-button img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+}
+
+#circle-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    bottom: 20px; /* Distância do botão em relação à parte inferior */
+    right: 20px; /* Distância do botão em relação à parte direita */
+    width: 70px; /* Largura do botão */
+    height: 70px; /* Altura do botão */
+    background-color: #fff; /* Cor de fundo */
+    
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    transition: transform 0.3s ease-in-out;
+}
+
+#circle-button:hover {
+    transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+}
+
+#circle-button img {
+    width: 70%; /* Ajusta o tamanho da imagem dentro do botão */
+    height: 70%;
+    object-fit: cover;
+}
+.hidden {
+    visibility:hidden;
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#popup-content {
+    background-color: #fff;
+    width: 803%;
+    height: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+#close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5c5c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#close-popup:hover {
+    background-color: #ff3b3b;
+}
+
+#popup-top {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+#popup-top img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#popup-top img:hover {
+    transform: scale(1.1);
+}
+
+#popup-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    cursor: pointer;
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.post-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-info .details {
+    display: flex;
+    flex-direction: column;
+}
