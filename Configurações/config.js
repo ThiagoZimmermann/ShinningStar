@@ -3055,7 +3055,7 @@ function showAccountLevelsPRESTADOR() {
                         </ul>
                     </div>
                     <div class="ser-titulo bronze">Ser Bronze</div>
-                    <button class="level-btn bronze" onclick='window.location.href = "homeprestador.html"'>R$ 19,90</button>
+                    <button class="level-btn bronze" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 19,90</button>
                 </div>
                 <div class="level-card">
                     <div class="level-header prata">Silver</div>
@@ -3071,7 +3071,7 @@ function showAccountLevelsPRESTADOR() {
                         </ul>
                     </div>
                     <div class="ser-titulo prata">Ser Silver</div>
-                    <button class="level-btn prata" onclick='window.location.href = "homeprestador.html"'>R$ 59,90</button>
+                    <button class="level-btn prata" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 59,90</button>
                 </div>
                 <div class="level-card">
                     <div class="level-header ouro">Gold</div>
@@ -3090,7 +3090,7 @@ function showAccountLevelsPRESTADOR() {
                         </ul>
                     </div>
                     <div class="ser-titulo ouro">Ser Gold</div>
-                    <button class="level-btn ouro" onclick='window.location.href = "homeprestador.html"'>R$ 79,90</button>
+                    <button class="level-btn ouro" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 79,90</button>
                 </div>
             </div>
         </div>
