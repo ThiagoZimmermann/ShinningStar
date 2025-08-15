@@ -15,10 +15,11 @@ function showPost(index) {
     feed.innerHTML = ''; // Limpa o feed
     const post = document.createElement('div');
     post.className = 'post';
+    post.style.opacity = '0'; // Inicialmente invisível
 
     // Define a imagem como background do post
     post.style.backgroundImage = `url(${posts[index].img})`;
-    post.style.backgroundSize = 'cover'; // Ajusta a imagem para cobrir o post
+    post.style.backgroundSize = 'cover';
     post.style.backgroundPosition = 'center'; // Centraliza a imagem
 
     // Adiciona texto do post
@@ -30,16 +31,18 @@ function showPost(index) {
     buttonPrev.className = 'post-button';
     buttonPrev.innerHTML = '<img src="../Images/up.png" alt="Anterior">';
     buttonPrev.addEventListener('click', () => {
+        animateFeed('up');
         currentPostIndex = (currentPostIndex - 1 + posts.length) % posts.length;
-        showPost(currentPostIndex);
+        setTimeout(() => showPost(currentPostIndex), 350);
     });
 
     const buttonNext = document.createElement('div');
     buttonNext.className = 'post-button';
     buttonNext.innerHTML = '<img src="../Images/down.png" alt="Próximo">';
     buttonNext.addEventListener('click', () => {
+        animateFeed('down');
         currentPostIndex = (currentPostIndex + 1) % posts.length;
-        showPost(currentPostIndex);
+        setTimeout(() => showPost(currentPostIndex), 350);
     });
 
     // Monta o post
@@ -48,7 +51,71 @@ function showPost(index) {
     post.appendChild(buttonNext);
 
     feed.appendChild(post);
+
+    // Fade in do post
+    setTimeout(() => {
+        post.style.transition = 'opacity 0.7s';
+        post.style.opacity = '1';
+    }, 10);
 }
+
+// Animação de aura e imagem
+function animateFeed(direction) {
+    const postDiv = feed.querySelector('.post');
+    if (!postDiv) return;
+
+    // Remove aura anterior se existir
+    const oldAura = document.getElementById('feed-aura');
+    if (oldAura) oldAura.remove();
+
+    // Cria aura animada
+    const aura = document.createElement('div');
+    aura.id = 'feed-aura';
+    aura.style.position = 'absolute';
+    aura.style.pointerEvents = 'none';
+    aura.style.top = feed.offsetTop + 'px';
+    aura.style.left = feed.offsetLeft + 'px';
+    aura.style.width = feed.offsetWidth + 'px';
+    aura.style.height = feed.offsetHeight + 'px';
+    aura.style.borderRadius = '16px';
+    aura.style.zIndex = 10;
+    aura.style.boxShadow = direction === 'up'
+        ? '0 0 80px 40px #3ecf3e60, 0 0 160px 80px #3ecf3e30'
+        : '0 0 80px 40px #d32f2f60, 0 0 160px 80px #d32f2f30';
+    aura.style.transition = 'all 0.7s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.7s';
+    aura.style.opacity = '1';
+
+    // Adiciona aura ao feed (usando parentNode para overlay)
+    feed.parentNode.style.position = 'relative';
+    feed.parentNode.appendChild(aura);
+
+    // Anima imagem para cima ou baixo e fade out/in
+    postDiv.style.transition = 'transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.7s';
+    postDiv.style.transform = direction === 'up' ? 'translateY(-120px)' : 'translateY(120px)';
+    postDiv.style.opacity = '0';
+
+    aura.animate([
+        { transform: 'translateX(0px)', opacity: 1 },
+        { transform: direction === 'up' ? 'translateY(-60px)' : 'translateY(60px)', opacity: 0.7 },
+        { transform: 'translateX(0px)', opacity: 0 }
+    ], {
+        duration: 700,
+        easing: 'cubic-bezier(.68,-0.55,.27,1.55)'
+    });
+
+    setTimeout(() => {
+        postDiv.style.transform = '';
+        postDiv.style.opacity = '0';
+        if (aura.parentNode) aura.parentNode.removeChild(aura);
+
+        // Fade in feed
+        setTimeout(() => {
+            postDiv.style.transition = 'opacity 0.7s';
+            postDiv.style.opacity = '1';
+        }, 100);
+    }, 700);
+}
+
 // Função para criar o popup dinamicamente
 function createPopup() {
     // Cria o contêiner do popup
