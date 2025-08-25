@@ -924,7 +924,7 @@ function showProviderPreferencesCLIENTE() {
             <div class="pref-content">
                 <video id="video-tutorial" class="pref-video" src="../../Images/video.mp4" controls autoplay muted></video>
                 <div class="pref-actions">
-                    <button id="btn-escolher" class="pref-btn">Caracterização de Serviços.</button>
+                    <button id="btn-escolher" class="pref-btn">Preferências de serviços</button>
                     <div id="btn-surpreenda" class="surprise" style="opacity:0.6; cursor: pointer; pointer-events:none;">Me surpreenda!</div>
                 </div>
             </div>

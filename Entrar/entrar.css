@@ -4,6 +4,7 @@ body {
     display: flex;
     font-family: 'Agrandir', sans-serif;
     
+    
 }
 
 #menu {
@@ -16,6 +17,7 @@ body {
     align-items: center;
     position: fixed;
     height: 100vh;
+    
 }
 
 #logo img {
@@ -55,6 +57,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #circle-button img {
@@ -90,6 +93,7 @@ body {
     display: flex;
     height: 87svh;
     border-radius: 10px;
+     text-shadow: -1px -1px 0 #9f5858, 1px -1px 0 #966161, -1px 1px 0 #965757, 1px 1px 0 #976060;
 }
 
 .post-img {
@@ -193,6 +197,10 @@ img#up {
     border-radius: 10px;
     text-align: center;
     position: relative;
+    
+    font: Bold 13pt Agrandir;
+    color: #5b1d1d; 
+    
 }
 
 #close-popup {
