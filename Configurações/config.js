@@ -2508,9 +2508,13 @@ function showPreferencesPopupPRESTADOR() {
 }
 
 function showProfilePagePRESTADOR() {
+    fadeOutIn(showPrestadorQuestionario1);
+}
+
+function showPrestadorQuestionario1() {
     document.getElementById('app').innerHTML = `
         <style>
-            .profile-page {
+            .question-page {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -2519,169 +2523,45 @@ function showProfilePagePRESTADOR() {
                 min-height: 90vh;
                 background: #faf9f7;
             }
-            .profile-card {
-                background: #fff;
-                border-radius: 18px;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-                padding: 38px 44px 32px 44px;
-                max-width: 540px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 32px;
-                border: 1.5px solid #e5e2e0;
-            }
-            .profile-page h1 {
-                margin-bottom: 32px;
+            .question-title {
                 font-size: 2em;
-                letter-spacing: 1px;
-            }
-            .profile-photo-upload {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 margin-bottom: 24px;
-            }
-            .profile-photo-preview {
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                background: #eee;
-                object-fit: cover;
-                margin-bottom: 12px;
-                border: 2px solid #803333;
-                box-shadow: 0 2px 8px rgba(128,51,51,0.08);
-            }
-            .profile-fields-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 18px 16px;
-                width: 100%;
-                margin-bottom: 18px;
-            }
-            .profile-fields-grid label {
-                font-weight: bold;
-                margin-bottom: 4px;
                 color: #803333;
-                font-size: 1em;
+                font-weight: bold;
             }
-            .profile-fields-grid input {
-                padding: 10px 16px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
+            .ai-powered {
+                background: linear-gradient(90deg, #ff4000ff 30%, #803333 100%);
+                color: #fff;
+                font-weight: bold;
+                font-size: 1.1em;
+                border-radius: 12px;
+                padding: 10px 32px;
+                margin-bottom: 32px;
+                letter-spacing: 1px;
+                box-shadow: 0 2px 8px #80333320;
+            }
+            .question-text {
+                font-size: 1.15em;
+                color: #803333;
+                margin-bottom: 18px;
+                text-align: center;
+                max-width: 520px;
+            }
+            .question-textarea {
+                width: 100%;
+                max-width: 520px;
+                min-height: 90px;
+                border-radius: 10px;
+                border: 1.5px solid #a94444;
                 font-size: 1.1em;
                 font-family: 'Agrandir', sans-serif;
-                width: 100%;
-                margin-bottom: 0;
-            }
-            .profile-desc-row {
-                width: 100%;
-                margin-bottom: 22px;
-            }
-            .profile-desc-label {
-                font-weight: bold;
-                color: #803333;
-                margin-bottom: 6px;
-                display: block;
-            }
-            .profile-desc {
-                width: 100%;
-                min-height: 60px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 1.05em;
-                font-family: 'Agrandir', sans-serif;
-                padding: 10px 16px;
+                padding: 12px 16px;
+                margin-bottom: 28px;
+                background: #fff;
+                box-shadow: 0 2px 8px #80333310;
                 resize: vertical;
             }
-            .add-tag-row {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 18px;
-                width: 100%;
-            }
-            .add-tag-input {
-                padding: 8px 14px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 1em;
-                font-family: 'Agrandir', sans-serif;
-                width: 70%;
-            }
-            .add-tag-btn {
-                background: #803333;
-                color: #fff;
-                border: none;
-                border-radius: 8px;
-                padding: 8px 18px;
-                font-size: 1em;
-                font-family: 'Agrandir', sans-serif;
-                cursor: pointer;
-                transition: background 0.2s, transform 0.2s;
-            }
-            .add-tag-btn:hover {
-                background: #a94444;
-                transform: translateY(-6px);
-            }
-            .profile-tags-row {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                margin-bottom: 18px;
-                width: 100%;
-            }
-            .profile-tag {
-                background: #949494ff;
-                color: #803333;
-                border-radius: 18px;
-                padding: 8px 18px;
-                font-weight: bold;
-                font-size: 1em;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                margin-bottom: 4px;
-            }
-            .profile-tag .remove-tag {
-                background: none;
-                border: none;
-                color: #a94444;
-                font-size: 1.1em;
-                cursor: pointer;
-                font-weight: bold;
-                margin-left: 4px;
-            }
-            .profile-doc-section {
-                width: 100%;
-                margin-bottom: 18px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .profile-doc-label {
-                font-weight: bold;
-                margin-bottom: 6px;
-                color: #803333;
-            }
-            .profile-doc-upload {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
-            .profile-doc-preview {
-                width: 120px;
-                height: 80px;
-                border-radius: 8px;
-                background: #eee;
-                object-fit: cover;
-                margin-bottom: 8px;
-                border: 2px solid #803333;
-                display: none;
-            }
-            .profile-advance-btn {
+            .question-btn {
                 background: #803333;
                 color: #fff;
                 border: none;
@@ -2690,411 +2570,161 @@ function showProfilePagePRESTADOR() {
                 font-size: 1.1em;
                 font-family: 'Agrandir', sans-serif;
                 cursor: pointer;
-                margin-top: 18px;
+                margin-top: 8px;
                 transition: background 0.2s, transform 0.2s;
-                width: 100%;
-                max-width: 240px;
-                align-self: center;
             }
-            .profile-advance-btn:hover {
+            .question-btn:hover {
                 background: #a94444;
                 transform: translateY(-8px);
             }
         </style>
-        <div class="profile-page">
-            <h1>Perfil</h1>
-            <div class="profile-card">
-                <div class="profile-photo-upload">
-                    <img id="profile-photo-preview" class="profile-photo-preview" src="" alt="Foto de perfil" style="display:none;">
-                    <input type="file" id="profile-photo-input" accept="image/*">
-                </div>
-                <div class="profile-fields-grid">
-                    <div>
-                        <label for="profile-nome">Nome:</label>
-                        <input type="text" id="profile-nome" placeholder="Nome">
-                    </div>
-                    <div>
-                        <label for="profile-sobrenome">Sobrenome:</label>
-                        <input type="text" id="profile-sobrenome" placeholder="Sobrenome">
-                    </div>
-                    <div>
-                        <label for="profile-altura">Altura:</label>
-                        <input type="text" id="profile-altura" placeholder="Ex: 1.70m">
-                    </div>
-                    <div>
-                        <label for="profile-cabelo">Cor do cabelo:</label>
-                        <input type="text" id="profile-cabelo" placeholder="Ex: Castanho">
-                    </div>
-                    <div>
-                        <label for="profile-olhos">Cor dos olhos:</label>
-                        <input type="text" id="profile-olhos" placeholder="Ex: Verde">
-                    </div>
-                    <div>
-                        <label for="profile-hobby">Hobby:</label>
-                        <input type="text" id="profile-hobby" placeholder="Ex: Leitura">
-                    </div>
-                </div>
-                <div class="profile-desc-row">
-                    <label class="profile-desc-label" for="profile-desc">Descrição:</label>
-                    <textarea id="profile-desc" class="profile-desc" placeholder="Descrição"></textarea>
-                </div>
-                <div class="add-tag-row">
-                    <input type="text" id="add-tag-input" class="add-tag-input" placeholder="Características Específicas">
-                    <button id="add-tag-btn" class="add-tag-btn">+</button>
-                </div>
-                <div id="profile-tags-row" class="profile-tags-row"></div>
-                <div class="profile-doc-section">
-                    <span class="profile-doc-label">RG</span>
-                    <div class="profile-doc-upload">
-                        <img id="profile-doc-preview" class="profile-doc-preview" src="" alt="RG">
-                        <input type="file" id="profile-doc-input" accept="image/*,application/pdf">
-                    </div>
-                </div>
-                <button class="profile-advance-btn" id="profile-advance-btn">Avançar</button>
+        <div class="question-page">
+            <div class="question-title">Questionário - Saúde Psíquica e Emocional</div>
+            <div class="ai-powered">AI Powered</div>
+            <div class="question-text">
+                Conte sobre uma situação difícil ou estressante que você enfrentou em sua vida ou em um ambiente de trabalho. Como você reagiu e quais estratégias utilizou para manter o equilíbrio emocional?
             </div>
+            <textarea class="question-textarea" id="q1"></textarea>
+            <button class="question-btn" id="btn-q1">Avançar</button>
         </div>
     `;
-
-    // Foto preview
-    const photoInput = document.getElementById('profile-photo-input');
-    const photoPreview = document.getElementById('profile-photo-preview');
-    photoInput.onchange = function () {
-        if (this.files && this.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photoPreview.src = e.target.result;
-                photoPreview.style.display = 'block';
-            };
-            reader.readAsDataURL(this.files[0]);
-        }
+    document.getElementById('btn-q1').onclick = () => {
+        fadeOutIn(showPrestadorQuestionario2);
     };
+}
 
-    // Documento preview
-    const docInput = document.getElementById('profile-doc-input');
-    const docPreview = document.getElementById('profile-doc-preview');
-    docInput.onchange = function () {
-        if (this.files && this.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                if (docInput.files[0].type.startsWith('image/')) {
-                    docPreview.src = e.target.result;
-                    docPreview.style.display = 'block';
-                } else {
-                    docPreview.style.display = 'none';
-                }
-            };
-            reader.readAsDataURL(this.files[0]);
-        }
+function showPrestadorQuestionario2() {
+    document.getElementById('app').innerHTML = `
+        <style>
+            .question-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Agrandir', sans-serif;
+                margin-top: 40px;
+                min-height: 90vh;
+                background: #faf9f7;
+            }
+            .question-title {
+                font-size: 2em;
+                margin-bottom: 24px;
+                color: #803333;
+                font-weight: bold;
+            }
+            .ai-powered {
+                background: linear-gradient(90deg, #ff4000ff 30%, #803333 100%);
+                color: #fff;
+                font-weight: bold;
+                font-size: 1.1em;
+                border-radius: 12px;
+                padding: 10px 32px;
+                margin-bottom: 32px;
+                letter-spacing: 1px;
+                box-shadow: 0 2px 8px #80333320;
+            }
+            .question-text {
+                font-size: 1.15em;
+                color: #803333;
+                margin-bottom: 18px;
+                text-align: center;
+                max-width: 520px;
+            }
+            .question-textarea {
+                width: 100%;
+                max-width: 520px;
+                min-height: 90px;
+                border-radius: 10px;
+                border: 1.5px solid #a94444;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                padding: 12px 16px;
+                margin-bottom: 28px;
+                background: #fff;
+                box-shadow: 0 2px 8px #80333310;
+                resize: vertical;
+            }
+            .question-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 38px;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-top: 8px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .question-btn:hover {
+                background: #a94444;
+                transform: translateY(-8px);
+            }
+        </style>
+        <div class="question-page">
+            <div class="question-title">Questionário - Saúde Psíquica e Emocional</div>
+            <div class="ai-powered">AI Powered</div>
+            <div class="question-text">
+                Como você costuma lidar com críticas ou comportamentos desrespeitosos de outras pessoas? Dê um exemplo concreto de como reagiu e o que aprendeu com a experiência.
+            </div>
+            <textarea class="question-textarea" id="q2"></textarea>
+            <button class="question-btn" id="btn-q2">Avançar</button>
+        </div>
+    `;
+    document.getElementById('btn-q2').onclick = () => {
+        fadeOutIn(showPrestadorParabens);
     };
+}
 
-    // Tags
-    const tagsRow = document.getElementById('profile-tags-row');
-    const addTagBtn = document.getElementById('add-tag-btn');
-    const addTagInput = document.getElementById('add-tag-input');
-    let tags = [];
-    addTagBtn.onclick = () => {
-        const value = addTagInput.value.trim();
-        if (value && !tags.includes(value)) {
-            tags.push(value);
-            renderTags();
-            addTagInput.value = '';
-        }
-    };
-    function renderTags() {
-        tagsRow.innerHTML = '';
-        tags.forEach(tag => {
-            const tagDiv = document.createElement('div');
-            tagDiv.className = 'profile-tag';
-            tagDiv.innerHTML = `${tag} <button class="remove-tag" title="Remover">&times;</button>`;
-            tagDiv.querySelector('.remove-tag').onclick = () => {
-                tags = tags.filter(t => t !== tag);
-                renderTags();
-            };
-            tagsRow.appendChild(tagDiv);
-        });
-    };
-
-    // Avançar agora vai para tela de post
-    document.getElementById('profile-advance-btn').onclick = () => {
+function showPrestadorParabens() {
+    document.getElementById('app').innerHTML = `
+        <style>
+            .parabens-page {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'Agrandir', sans-serif;
+                margin-top: 90px;
+                min-height: 60vh;
+                background: #faf9f7;
+            }
+            .parabens-text {
+                color: #984b4bff;
+                background: #000000ff;
+                border-radius: 16px;
+                padding: 32px 38px;
+                font-size: 1.5em;
+                font-weight: bold;
+                margin-bottom: 38px;
+                text-align: center;
+                box-shadow: 0 2px 12px #80333330;
+            }
+            .question-btn {
+                background: #803333;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 38px;
+                font-size: 1.1em;
+                font-family: 'Agrandir', sans-serif;
+                cursor: pointer;
+                margin-top: 8px;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .question-btn:hover {
+                background: #a94444;
+                transform: translateY(-8px);
+            }
+        </style>
+        <div class="parabens-page">
+            <div class="parabens-text">
+                Parabéns, agora você faz parte da Shining Stars.<br>Agora, é o seu momento de brilhar!
+            </div>
+            <button class="question-btn" id="btn-final">Avançar</button>
+        </div>
+    `;
+    document.getElementById('btn-final').onclick = () => {
         fadeOutIn(showFirstPostPRESTADOR);
     };
-}
-
-function showFirstPostPRESTADOR() {
-    document.getElementById('app').innerHTML = `
-        <style>
-            .first-post-page {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                font-family: 'Agrandir', sans-serif;
-                min-height: 90vh;
-                background: #f9f6f2;
-                padding-top: 40px;
-            }
-            .first-post-card {
-                background: #fff;
-                border-radius: 18px;
-                box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-                padding: 38px 44px 32px 44px;
-                max-width: 480px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 32px;
-                border: 1.5px solid #e5e2e0;
-            }
-            .first-post-title {
-                font-size: 1.6em;
-                color: #803333;
-                margin-bottom: 24px;
-                font-weight: bold;
-            }
-            .first-post-photo-upload {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 18px;
-            }
-            .first-post-photo-preview {
-                width: 180px;
-                height: 180px;
-                border-radius: 16px;
-                background: #eee;
-                object-fit: cover;
-                margin-bottom: 12px;
-                border: 2px solid #803333;
-                box-shadow: 0 2px 8px rgba(128,51,51,0.08);
-                display: none;
-            }
-            .first-post-desc-label {
-                font-weight: bold;
-                color: #803333;
-                margin-bottom: 6px;
-                display: block;
-            }
-            .first-post-desc {
-                width: 100%;
-                min-height: 60px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                font-size: 1.05em;
-                font-family: 'Agrandir', sans-serif;
-                padding: 10px 16px;
-                resize: vertical;
-                margin-bottom: 18px;
-            }
-            .first-post-btn {
-                background: #803333;
-                color: #fff;
-                border: none;
-                border-radius: 8px;
-                padding: 14px 38px;
-                font-size: 1.1em;
-                font-family: 'Agrandir', sans-serif;
-                cursor: pointer;
-                margin-top: 18px;
-                transition: background 0.2s, transform 0.2s;
-                width: 100%;
-                max-width: 240px;
-                align-self: center;
-            }
-            .first-post-btn:hover {
-                background: #a94444;
-                transform: translateY(-8px);
-            }
-        </style>
-        <div class="first-post-page">
-            <div class="first-post-card">
-                <div class="first-post-title">Faça seu primeiro post</div>
-                <div class="first-post-photo-upload">
-                    <img id="first-post-photo-preview" class="first-post-photo-preview" src="" alt="Foto do post">
-                    <input type="file" id="first-post-photo-input" accept="image/*">
-                </div>
-                <label class="first-post-desc-label" for="first-post-desc">Descrição do post:</label>
-                <textarea id="first-post-desc" class="first-post-desc" placeholder="Descreva seu serviço, diferencial, etc."></textarea>
-                <button class="first-post-btn" id="first-post-btn">Avançar</button>
-            </div>
-        </div>
-    `;
-    // Foto preview
-    const photoInput = document.getElementById('first-post-photo-input');
-    const photoPreview = document.getElementById('first-post-photo-preview');
-    photoInput.onchange = function () {
-        if (this.files && this.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                photoPreview.src = e.target.result;
-                photoPreview.style.display = 'block';
-            };
-            reader.readAsDataURL(this.files[0]);
-        }
-    };
-    // Avançar agora vai para tela de post
-    document.getElementById('first-post-btn').onclick = () => {
-        fadeOutIn(showAccountLevelsPRESTADOR);
-    };
-}
-
-function showAccountLevelsPRESTADOR() {
-    document.getElementById('app').innerHTML = `
-        <style>
-            .account-page {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin-top: 40px;
-                font-family: 'Agrandir', sans-serif;
-            }
-            .account-page h1 {
-                margin-bottom: 40px;
-            }
-            .levels-row {
-                display: flex;
-                gap: 32px;
-                justify-content: center;
-                width: 100%;
-                margin-bottom: 40px;
-                flex-wrap: wrap;
-            }
-            .level-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 300px;
-                min-height: 520px;
-                background: #f2f2f2;
-                border-radius: 18px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-                overflow: hidden;
-                margin-bottom: 0;
-                position: relative;
-                justify-content: flex-start;
-                padding-bottom: 40px;
-            }
-            .level-header {
-                width: 100%;
-                padding: 18px 0 12px 0;
-                text-align: center;
-                font-weight: bold;
-                font-size: 1.25em;
-                color: #fff;
-                font-family: 'Agrandir', sans-serif;
-            }
-            .bronze { background: linear-gradient(90deg, #b08d57 60%, #c9a0636c 100%); }
-            .prata  { background: linear-gradient(90deg, #bdbdbd 60%, #e0e0e05a 100%); }
-            .ouro   { background: linear-gradient(90deg, #ffd700 60%, #ffe0667b 100%); color: #7a5b005b;}
-            .normal { background: linear-gradient(90deg, #803333 60%, #a944446a 100%); }
-            .level-benefits {
-                padding: 18px 24px 10px 24px;
-                text-align: left;
-                font-size: 1em;
-                color: #444;
-                flex: 1;
-            }
-            .level-benefits ul {
-                padding-left: 18px;
-                margin: 0;
-            }
-            .level-benefits li {
-                margin-bottom: 8px;
-            }
-            .level-btn {
-                margin: 0 0 0 0;
-                padding: 12px 28px;
-                border: none;
-                border-radius: 8px;
-                font-size: 1.1em;
-                font-family: 'Agrandir', sans-serif;
-                color: #fff;
-                cursor: pointer;
-                transition: background 0.2s, transform 0.2s;
-                width: 80%;
-                align-self: center;
-                position: absolute;
-                bottom: 18px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .level-btn.bronze { background: #b08d57; }
-            .level-btn.prata  { background: #bdbdbd; color: #444; }
-            .level-btn.ouro   { background: #ffd700; color: #7a5c00; }
-            .level-btn.normal { background: #803333; }
-            .level-btn:hover  { filter: brightness(0.95); transform: translateX(-50%) translateY(-6px);}
-            .ser-titulo {
-                font-weight: bold;
-                text-align: center;
-                margin: 18px 0 18px 0;
-                font-size: 1.1em;
-                background: #f2f2f2;
-                padding: 8px 0;
-                border-radius: 8px;
-            }
-            .ser-titulo.bronze { color: #b08d57; }
-            .ser-titulo.prata  { color: #bdbdbd; }
-            .ser-titulo.ouro   { color: #ffd700; }
-            .ser-titulo.normal { color: #803333; }
-            .red-bold {
-                color: #a94444;
-                font-weight: bold;
-            }
-        </style>
-        <div class="account-page">
-            <h1>Níveis de conta</h1>
-            <div class="levels-row">
-                <div class="level-card">
-                    <div class="level-header bronze">Bronze</div>
-                    <div class="level-benefits">
-                        <ul>
-                            <li>Conta: conta por IP e documento, preço por mês;</li>
-                            <li>Chat expandido até 4 pessoas por semana;</li>
-                            <li>Pedidos limitados de 4 por mês;</li>
-                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento.</li>
-                            <li>Preferência particulares fenotípicas.</li>
-                        </ul>
-                    </div>
-                    <div class="ser-titulo bronze">Ser Bronze</div>
-                    <button class="level-btn bronze" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 19,90</button>
-                </div>
-                <div class="level-card">
-                    <div class="level-header prata">Silver</div>
-                    <div class="level-benefits">
-                        <ul>
-                            <li>Conta: por IP e documento, preço por mês;</li>
-                            <li>Chat expandido até 6 pessoas por semana;</li>
-                            <li>Pedidos por mês limitados de 5 por mês;</li>
-                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
-                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
-                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
-                            <li>Preferências particulares fenotípicas.</li>
-                        </ul>
-                    </div>
-                    <div class="ser-titulo prata">Ser Silver</div>
-                    <button class="level-btn prata" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 59,90</button>
-                </div>
-                <div class="level-card">
-                    <div class="level-header ouro">Gold</div>
-                    <div class="level-benefits">
-                        <ul>
-                            <li>Conta: por IP e documento, preço por mês;</li>
-                            <li>Chat expandido ilimitado;</li>
-                            <li>Pedidos por mês ilimitado;</li>
-                            <li>Possibilidade de agenda automática que marca os dias e horários dos encontros para facilitar a organização, juntamente de avisos como notificações para recordar sobre o evento;</li>
-                            <li>Maior variedade de opção de serviços na região, sendo mais fácil a busca pelo seu “par ideal”;</li>
-                            <li>Ferramenta de expansão de região e possibilidades, por exemplo, se um usuário escolhe a região de SP, poderá mudar a região de atuação para que tenha as mesmas preferências em outra região, por exemplo fora do país, assim tendo um atendimento muito melhor e mais opções worldwide;</li>
-                            <li>Preferência particulares fenotípicas;</li>
-                            <li>Escolha de serviços por preço específico (por faixa de preço);</li>
-                            <li>1 Mês grátis ao pagar uma anuidade;</li>
-                            <li>Fotos privadas ilimitadas.</li>
-                        </ul>
-                    </div>
-                    <div class="ser-titulo ouro">Ser Gold</div>
-                    <button class="level-btn ouro" onclick='window.location.href = "../Menu Prestador/homeprestador.html"'>R$ 79,90</button>
-                </div>
-            </div>
-        </div>
-    `;
 }
 
 // --- TELA INICIAL ---
